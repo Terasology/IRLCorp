@@ -1,0 +1,18 @@
+{
+    "displayName": "Iron Fluid Pump",
+    "entity": {
+        "prefab": "IronFluidPump"
+    },
+    "shape": "StructuralResources:Conn8TwoConLine",
+    "rotation": "Machines:fluidPipe",
+    "no_connections": { "shape": "StructuralResources:Conn8NoCon" },
+    "one_connection": { "shape": "StructuralResources:Conn8OneCon" },
+    "line_connection": { "shape": "StructuralResources:Conn8TwoConLine" },
+    "2d_corner": { "shape": "StructuralResources:Conn8TwoConCorn" },
+    "3d_corner": { "shape": "StructuralResources:Conn8ThreeConCorn" },
+    "2d_t": { "shape": "StructuralResources:Conn8ThreeConTee" },
+    "cross": { "shape": "StructuralResources:Conn8FourConCross" },
+    "3d_side": { "shape": "StructuralResources:Conn8FourConTee" },
+    "five_connections": { "shape": "StructuralResources:Conn8FiveCon" },
+    "all": { "shape": "StructuralResources:Conn8SixCon" }
+}

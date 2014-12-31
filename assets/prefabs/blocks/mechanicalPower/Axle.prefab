@@ -1,0 +1,14 @@
+{
+    "MechanicalPowerBlockNetwork": {
+        "directions": [
+            "FORWARD",
+            "BACKWARD"
+        ]
+    },
+    "MechanicalPowerConductor": {},
+    "RotatingAxle": {
+        "renderedBlockFamily": "ManualLabor:IronBox:StructuralResources:Conn4TwoConLine"
+    },
+    "DropBlockInventory": {},
+    "Network": {}
+}

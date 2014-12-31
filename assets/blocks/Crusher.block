@@ -1,0 +1,7 @@
+{
+    "basedOn" : "Machines:MetalMachine",
+    "displayName": "Crusher",
+    "entity": {
+        "prefab": "Crusher"
+    }
+}

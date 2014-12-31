@@ -1,0 +1,10 @@
+{
+  "FluidInventory": {
+      "fluidSlots": [ 0 ],
+      "maximumVolumes": [ 50 ]
+  },
+  "FluidTankDisplay": {
+  },
+  "FluidTransportBlockNetwork": {},
+  "Network": {}
+}

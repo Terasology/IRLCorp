@@ -1,0 +1,11 @@
+{
+  "parent": "engine:iconItem",
+  "Item": {
+    "icon": "IRLCorp:IRLCorp.WoodenMechanicalParts",
+    "stackId": "machines:WoodenMechanicalParts",
+    "renderWithIcon": true
+  },
+  "DisplayName": {
+    "name": "Wooden Mechanical Parts"
+  }
+}

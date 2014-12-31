@@ -1,0 +1,32 @@
+{
+   "InteractionTarget": {},
+   "InteractionScreen": {
+     "screen": "engine:containerScreen"
+   },
+  "Inventory": {
+    "privateToOwner": false,
+    "itemSlots": [
+      0
+    ]
+  },
+  "DropBlockInventory": {},
+  "PushInventoryInDirection": {
+    "animateMovingItem": true
+  },
+  "CategorizedInventory": {
+    "slotMapping": {
+      "ALL": [
+        0
+      ]
+    }
+  },
+  "RenderInventoryInCategory": {
+    "category": "ALL",
+    "itemsAreFlat": true,
+    "verticalAlignmentBottom": true,
+    "blockSize": 0.5
+  },
+  "Network": {
+    
+  }
+}

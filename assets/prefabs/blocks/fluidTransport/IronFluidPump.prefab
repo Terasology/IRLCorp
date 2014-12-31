@@ -1,0 +1,18 @@
+{
+  "Workstation": {
+    "supportedProcessTypes": {
+      "Machines:Pump": true
+    }
+  },
+  "FluidPump": {
+    "maximumFlowRate": 10
+  },
+  "FluidTransportBlockNetwork": {},
+  "MachineDefinition": {
+  },
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 100
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "Network": {}
+}

@@ -1,0 +1,13 @@
+{
+  "ProcessDefinition": {
+    "processType": "IRLCorp:Engine"
+  },
+  "ItemPrefabInput": {
+    "itemCounts": {
+      "IRLCorp:Coal": 1
+    }
+  },
+  "ActivateEngineOutput": {
+    "activateTime": 10000
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "RequirementInput": {
+        "requirements": ["Hammer"]
+    },
+    "ItemPrefabInput": {
+        "itemCounts": {
+            "ManualLabor:Plank": 1,
+            "ManualLabor:Pegs": 2
+        }
+    },
+    "BlockFamilyOutput": {
+        "blockCounts": {
+            "IRLCorp:WoodenAxle": 1
+        }
+    }
+}

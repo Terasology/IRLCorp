@@ -1,0 +1,30 @@
+{
+  "MachineDefinition": {
+    "inputSlots": 1
+  },
+  "InteractionTarget": {},
+  "InteractionScreen": {
+    "screen": "Machines:DefaultMachine"
+  },
+  "Workstation": {
+    "supportedProcessTypes": {
+      "IRLCorp:Windmill": true
+    }
+  },
+  "MechanicalPowerProducer": {
+    "power": 1
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "DropBlockInventory": {},
+  "RenderInventoryInCategory": {
+    "category": "INPUT",
+    "translate": [
+      0,
+      0,
+      1
+    ],
+    "itemSize": 1,
+    "rotateWithBlock": true
+  },
+  "Network": {}
+}

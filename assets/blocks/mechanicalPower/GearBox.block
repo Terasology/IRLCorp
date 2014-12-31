@@ -1,0 +1,8 @@
+{
+    "basedOn" : "Machines:WoodenMachine",
+    "displayName": "Gear Box",
+    "entity": {
+        "prefab": "GearBox"
+    }
+
+}

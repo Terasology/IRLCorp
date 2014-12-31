@@ -1,0 +1,19 @@
+{
+  "parent": "engine:iconItem",
+  "Item": {
+    "icon": "IRLCorp:IRLCorp.WindmillCross",
+    "stackId": "IRLCorp.WindmillSail",
+    "renderWithIcon": true
+  },
+  "DisplayName": {
+    "name": "Windmill Sail"
+  },
+  "CustomRenderedItemMesh": {
+    "mesh": "IRLCorp:WindmillSail",
+    "material": "IRLCorp:WindmillSail"
+  },
+  "AnimateRotation": {
+    "roll": "CLOCKWISE_90",
+    "speed": 0.1
+  }
+}

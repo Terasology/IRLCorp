@@ -1,0 +1,28 @@
+{
+  "InteractionTarget": {},
+  "InteractionScreen": {
+    "screen": "Machines:DefaultMachine"
+  },
+  "Workstation": {
+    "supportedProcessTypes": {
+      "ManualLabor:Grinding": true
+    }
+  },
+  "MachineDefinition": {
+    "inputSlots": 1,
+    "requirementSlots": 0,
+    "outputSlots": 1,
+    "actionTitle": "Grind",
+    "extraWidget": "IRLCorp:MechanicalPowerGauge"
+  },
+  "ProcessRequirementsProvider": {
+     "requirements": ["FineHammer"]
+  },
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 200
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "DropBlockInventory": {},
+  "Network": {
+  }
+}

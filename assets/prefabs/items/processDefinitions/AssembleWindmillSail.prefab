@@ -1,0 +1,15 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "ItemPrefabInput": {
+        "itemCounts": {
+            "IRLCorp:WindmillArmCovered": 4
+        }
+    },
+    "ItemPrefabOutput": {
+        "itemCounts": {
+            "IRLCorp:WindmillSail": 1
+        }
+    }
+}

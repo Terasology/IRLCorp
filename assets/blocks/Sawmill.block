@@ -1,0 +1,7 @@
+{
+    "basedOn" : "Machines:MetalMachine",
+    "displayName": "Sawmill",
+    "entity": {
+        "prefab": "Sawmill"
+    }
+}

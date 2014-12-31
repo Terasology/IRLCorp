@@ -1,0 +1,11 @@
+{
+  "parent": "engine:iconItem",
+  "Item": {
+    "icon": "IRLCorp:IRLCorp.WingMesh",
+    "stackId": "IRLCorp.WindmillArm",
+    "renderWithIcon": true
+  },
+  "DisplayName": {
+    "name": "Windmill Arm"
+  }
+}

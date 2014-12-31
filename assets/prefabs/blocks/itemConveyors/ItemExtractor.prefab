@@ -1,0 +1,22 @@
+{
+   "InteractionTarget": {},
+   "InteractionScreen": {
+     "screen": "engine:containerScreen"
+   },
+  "Inventory": {
+    "privateToOwner": false,
+    "itemSlots": [
+      0
+    ]
+  },
+  "DropBlockInventory": {},
+  "PullInventoryInDirection": {
+    "direction": "FORWARD"
+  },
+  "PushInventoryInDirection": {
+    "direction": "BACKWARD"
+  },
+  "Network": {
+    
+  }
+}

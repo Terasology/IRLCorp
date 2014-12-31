@@ -1,0 +1,17 @@
+{
+    "MachineDefinition": {
+        "extraWidget": "IRLCorp:MechanicalPowerGauge"
+    },
+    "InteractionTarget": {},
+    "InteractionScreen": {
+      "screen": "Machines:DefaultMachine"
+    },
+    "Workstation": {
+        "supportedProcessTypes": {}
+      },
+    "MechanicalPowerConsumer": {
+        "maximumStoredPower": 200
+    },
+    "MechanicalPowerBlockNetwork": {},
+    "Network": {}
+}

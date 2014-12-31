@@ -1,0 +1,28 @@
+{
+  "InteractionTarget": {},
+  "InteractionScreen": {
+    "screen": "Machines:DefaultMachine"
+  },
+  "Workstation": {
+    "supportedProcessTypes": {
+      "ManualLabors:Sawing": true
+    }
+  },
+  "MachineDefinition": {
+    "inputSlots": 1,
+    "requirementSlots": 0,
+    "outputSlots": 1,
+    "actionTitle": "Saw",
+    "extraWidget": "IRLCorp:MechanicalPowerGauge"
+  },
+  "ProcessRequirementsProvider": {
+     "requirements": ["Saw"]
+  },
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 200
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "DropBlockInventory": {},
+  "Network": {
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "basedOn" : "Machines:MetalMachine",
+    "displayName": "Axle",
+    "tile": "Core:Plank",
+    "entity":
+    {
+        "prefab" : "Axle"
+    },
+    "shape": "StructuralResources:Conn4TwoConLine",
+    "rotation" : "surfacePlacement",
+    "sides" : { },
+    "top" : { },
+    "bottom" : { },
+    "invisible": true,
+    "shadowCasting": false
+}

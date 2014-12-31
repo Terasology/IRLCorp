@@ -1,0 +1,15 @@
+{
+  "displayName": "Conveyor Belt",
+  "tiles": {
+    "all": "conveyorbelt_bottom",
+    "center": "conveyorbelt_top",
+    "left": "conveyorbelt_side",
+    "right": "conveyorbelt_side"
+  },
+  "shape": "halfBlock",
+  "rotation" : "surfacePlacement",
+  "sides" : { },
+  "entity": {
+    "prefab": "ConveyorBelt"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "displayName": "Fluid Tank",
+  "rotation": "horizontal",
+  "entity": {
+    "prefab": "FluidTank"
+  },
+  "tiles" : {
+          "sides": "FluidTank_Side",
+          "all": "FluidTank"
+  },
+  "translucent": true,
+  "shadowCasting": false,
+  "doubleSided": true
+}

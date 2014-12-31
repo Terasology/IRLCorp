@@ -1,0 +1,16 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "ItemPrefabInput": {
+        "itemCounts": {
+            "ManualLabor:Stick": 8,
+            "ManualLabor:Plank": 1
+        }
+    },
+    "ItemPrefabOutput": {
+        "itemCounts": {
+            "IRLCorp:WindmillArm": 1
+        }
+    }
+}

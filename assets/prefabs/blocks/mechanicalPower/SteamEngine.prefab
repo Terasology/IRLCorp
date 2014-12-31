@@ -1,0 +1,20 @@
+{
+    "MachineDefinition": {
+      "inputSlots": 1
+    },
+    "InteractionTarget": {},
+    "InteractionScreen": {
+      "screen": "Machines:DefaultMachine"
+    },
+    "Workstation": {
+        "supportedProcessTypes": {
+          "IRLCorp:SteamEngine": true
+        }
+      },
+    "MechanicalPowerProducer": {
+        "power": 10
+    },
+    "MechanicalPowerBlockNetwork": {},
+    "DropBlockInventory": {},
+    "Network": {}
+}

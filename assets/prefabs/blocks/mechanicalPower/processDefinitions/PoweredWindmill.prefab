@@ -1,0 +1,13 @@
+{
+  "ProcessDefinition": {
+    "processType": "IRLCorp:Windmill"
+  },
+  "ItemPrefabInput": {
+    "itemCounts": {
+      "IRLCorp:WindmillSail": 0
+    }
+  },
+  "ActivateEngineOutput": {
+    "activateTime": 10000
+  }
+}

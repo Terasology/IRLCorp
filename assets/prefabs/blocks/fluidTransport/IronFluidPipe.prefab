@@ -1,0 +1,7 @@
+{
+    "FluidPipe": {
+        "maximumFlowRate": 3
+    },
+    "FluidTransportBlockNetwork": {},
+    "Network": {}
+}

@@ -1,0 +1,28 @@
+{
+  "InteractionTarget": {},
+  "InteractionScreen": {
+    "screen": "Machines:DefaultMachine"
+  },
+  "Workstation": {
+    "supportedProcessTypes": {
+      "ManualLabor:Crushing": true
+    }
+  },
+  "MachineDefinition": {
+    "inputSlots": 1,
+    "requirementSlots": 0,
+    "outputSlots": 2,
+    "actionTitle": "Crush",
+    "extraWidget": "IRLCorp:MechanicalPowerGauge"
+  },
+  "ProcessRequirementsProvider": {
+     "requirements": ["Hammer"]
+  },
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 200
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "DropBlockInventory": {},
+  "Network": {
+  }
+}
