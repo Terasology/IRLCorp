@@ -1,0 +1,8 @@
+{
+  "type": "TerraTech:MechanicalPowerGauge",
+  "content": {
+        "type": "VerticalProgressBar",
+        "fillTexture": "MechanicalPowerBar",
+        "id": "powerMeter"
+    }
+}

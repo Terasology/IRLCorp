@@ -1,0 +1,10 @@
+{
+  "basedOn": "Machines:WoodenMachine",
+  "tiles": {
+    "all": "WoodenGearBox"
+  },
+  "displayName": "Wooden Gear Box",
+  "entity": {
+    "prefab": "WoodenGearBox"
+  }
+}

@@ -12,7 +12,7 @@
     },
     "MaterialItemInput": {
         "blockCounts": {
-            "IRLCorp:PickAxeHead": 1
+            "ManualLabor:PickAxeHead": 1
         }
     },
     "BlockFamilyOutput": {

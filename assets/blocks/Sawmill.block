@@ -1,5 +1,10 @@
 {
     "basedOn" : "Machines:MetalMachine",
+    "rotation": "horizontal",
+    "tiles": {
+        "all": "MachineCasing",
+        "front": "Sawmill"
+    },
     "displayName": "Sawmill",
     "entity": {
         "prefab": "Sawmill"

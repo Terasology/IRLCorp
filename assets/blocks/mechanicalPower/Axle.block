@@ -1,7 +1,7 @@
 {
     "basedOn" : "Machines:MetalMachine",
     "displayName": "Axle",
-    "tile": "Core:Plank",
+    "tile": "MachineCasing",
     "entity":
     {
         "prefab" : "Axle"

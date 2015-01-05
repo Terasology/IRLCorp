@@ -1,5 +1,8 @@
 {
     "basedOn" : "Machines:WoodenMachine",
+    "tiles": {
+        "all": "Engine"
+    },
     "displayName": "Engine",
     "entity": {
         "prefab": "Engine"
