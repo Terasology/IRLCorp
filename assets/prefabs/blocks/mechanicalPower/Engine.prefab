@@ -12,7 +12,7 @@
     }
   },
   "MechanicalPowerProducer": {
-    "power": 1
+    "power": 5
   },
   "MechanicalPowerBlockNetwork": {},
   "DropBlockInventory": {},

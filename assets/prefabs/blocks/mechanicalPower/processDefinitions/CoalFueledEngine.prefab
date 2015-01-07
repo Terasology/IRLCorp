@@ -2,12 +2,12 @@
   "ProcessDefinition": {
     "processType": "IRLCorp:Engine"
   },
-  "ItemPrefabInput": {
+  "MaterialItemInput": {
     "itemCounts": {
-      "IRLCorp:Coal": 1
+      "ManualLabor:Chunks.SubstanceMatters:Coal": 1
     }
   },
   "ActivateEngineOutput": {
-    "activateTime": 10000
+    "activateTime": 60000
   }
 }
