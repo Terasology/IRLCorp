@@ -1,0 +1,8 @@
+{
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 50
+  },
+  "MechanicalPowerRegen": {
+    "power": 50
+  }
+}

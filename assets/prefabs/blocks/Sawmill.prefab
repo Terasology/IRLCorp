@@ -5,7 +5,7 @@
   },
   "Workstation": {
     "supportedProcessTypes": {
-      "ManualLabors:Sawing": true
+      "ManualLabor:Sawing": true
     }
   },
   "MachineDefinition": {

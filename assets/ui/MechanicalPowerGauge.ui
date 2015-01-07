@@ -1,5 +1,5 @@
 {
-  "type": "TerraTech:MechanicalPowerGauge",
+  "type": "IRLCorp:MechanicalPowerGauge",
   "content": {
         "type": "VerticalProgressBar",
         "fillTexture": "MechanicalPowerBar",
