@@ -11,7 +11,7 @@
         }
     },
     "MaterialItemInput": {
-        "blockCounts": {
+        "itemCounts": {
             "ManualLabor:HammerHead": 1
         }
     },

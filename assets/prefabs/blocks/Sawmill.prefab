@@ -13,7 +13,7 @@
     "requirementSlots": 0,
     "outputSlots": 1,
     "actionTitle": "Saw",
-    "extraWidget": "IRLCorp:MechanicalPowerGauge"
+    "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
   "ProcessRequirementsProvider": {
      "requirements": ["Saw"]

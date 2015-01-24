@@ -1,6 +1,6 @@
 {
     "MachineDefinition": {
-        "extraWidget": "IRLCorp:MechanicalPowerGauge"
+        "outputWidgets": ["IRLCorp:MechanicalPowerGauge"]
     },
     "InteractionTarget": {},
     "InteractionScreen": {

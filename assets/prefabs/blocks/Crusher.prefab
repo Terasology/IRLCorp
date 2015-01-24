@@ -13,7 +13,7 @@
     "requirementSlots": 0,
     "outputSlots": 2,
     "actionTitle": "Crush",
-    "extraWidget": "IRLCorp:MechanicalPowerGauge"
+    "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
   "ProcessRequirementsProvider": {
      "requirements": ["Hammer"]
