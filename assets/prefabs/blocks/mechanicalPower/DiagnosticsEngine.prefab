@@ -1,0 +1,8 @@
+{
+  "MechanicalPowerProducer": {
+    "power": 50,
+    "active": true
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "Network": {}
+}

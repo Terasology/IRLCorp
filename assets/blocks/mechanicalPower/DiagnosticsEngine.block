@@ -1,0 +1,9 @@
+{
+  "tiles": {
+    "all": "DiagnosticsEngine"
+  },
+  "displayName": "Diagnostics Engine",
+  "entity": {
+    "prefab": "DiagnosticsEngine"
+  }
+}
