@@ -1,0 +1,11 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "rotation": "horizontal",
+  "tiles": {
+    "all": "FrictionHeater"
+  },
+  "displayName": "Friction Heater",
+  "entity": {
+    "prefab": "FrictionHeater"
+  }
+}

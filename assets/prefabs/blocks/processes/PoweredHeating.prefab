@@ -1,0 +1,11 @@
+{
+  "ProcessDefinition": {
+    "processType": "IRLCorp:PoweredHeating"
+  },
+  "MechanicalPowerInput": {
+    "power": 25
+  },
+  "HeatOutput": {
+    "burnTime": 1000
+  }
+}
