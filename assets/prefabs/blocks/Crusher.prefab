@@ -16,7 +16,7 @@
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
   "ProcessRequirementsProvider": {
-     "requirements": ["Hammer"]
+    "requirements": ["SledgeHammer"]
   },
   "MechanicalPowerConsumer": {
     "maximumStoredPower": 200

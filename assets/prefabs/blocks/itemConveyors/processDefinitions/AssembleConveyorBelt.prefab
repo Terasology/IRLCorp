@@ -3,7 +3,7 @@
         "processType": "ManualLabor:Assembling"
     },
     "RequirementInput": {
-        "requirements": ["Hammer"]
+        "requirements": ["Mallet"]
     },
     "ItemPrefabInput": {
         "itemCounts": {
