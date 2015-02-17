@@ -13,7 +13,6 @@
     "material": "IRLCorp:WindmillSail"
   },
   "AnimateRotation": {
-    "roll": "CLOCKWISE_90",
-    "speed": 0.1
+    "rollSpeed": 0.1
   }
 }
