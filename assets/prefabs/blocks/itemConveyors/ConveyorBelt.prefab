@@ -13,15 +13,8 @@
   "PushInventoryInDirection": {
     "animateMovingItem": true
   },
-  "CategorizedInventory": {
-    "slotMapping": {
-      "ALL": [
-        0
-      ]
-    }
-  },
-  "RenderInventoryInCategory": {
-    "category": "ALL",
+  "RenderInventorySlots": {
+    "slots": [0],
     "itemsAreFlat": true,
     "verticalAlignmentBottom": true,
     "blockSize": 0.5

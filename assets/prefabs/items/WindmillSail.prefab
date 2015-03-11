@@ -13,6 +13,11 @@
     "material": "IRLCorp:WindmillSail"
   },
   "AnimateRotation": {
-    "rollSpeed": 0.1
+    "rollSpeed": 0.02
+  },
+  "ProcessRequirementsProvider": {
+    "requirements": [
+      "WindmillSail"
+    ]
   }
 }

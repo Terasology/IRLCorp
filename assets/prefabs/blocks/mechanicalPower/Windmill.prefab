@@ -1,6 +1,6 @@
 {
   "MachineDefinition": {
-    "inputSlots": 1
+    "requirementSlots": 1
   },
   "InteractionTarget": {},
   "InteractionScreen": {
@@ -17,7 +17,7 @@
   "MechanicalPowerBlockNetwork": {},
   "DropBlockInventory": {},
   "RenderInventoryInCategory": {
-    "category": "INPUT",
+    "category": "REQUIREMENTS",
     "translate": [
       0,
       0,
