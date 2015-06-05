@@ -1,7 +1,7 @@
 {
   "parent": "engine:iconItem",
   "Item": {
-    "icon": "IRLCorp:IRLCorp.WrappedWing",
+    "icon": "IRLCorp:IRLCorp#WrappedWing",
     "stackId": "IRLCorp.WindmillArmCovered",
     "renderWithIcon": true
   },

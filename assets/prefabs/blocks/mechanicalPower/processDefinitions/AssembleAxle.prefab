@@ -7,7 +7,7 @@
     },
     "ItemPrefabInput": {
         "itemCounts": {
-            "ManualLabor:Rod.SubstanceMatters:Iron": 1,
+            "SubstanceMatters:MaterialItem#ManualLabor:Rod|SubstanceMatters:Iron": 1,
             "ManualLabor:Bolt": 2
         }
     },

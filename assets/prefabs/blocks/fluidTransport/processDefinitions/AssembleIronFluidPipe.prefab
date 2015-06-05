@@ -7,7 +7,7 @@
   },
   "MaterialItemInput": {
     "itemCounts": {
-      "Manuallabor:Sheet.SubstanceMatters:Iron": 1,
+      "SubstanceMatters:MaterialItem#Manuallabor:Sheet|SubstanceMatters:Iron": 1,
       "ManualLabor:Bolt" : 2
     }
   },

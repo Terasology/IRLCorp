@@ -1,7 +1,7 @@
 {
   "parent": "engine:iconItem",
   "Item": {
-    "icon": "IRLCorp:IRLCorp.MechanicalParts",
+    "icon": "IRLCorp:IRLCorp#MechanicalParts",
     "stackId": "IRLCorp:MechanicalParts",
     "renderWithIcon": true
   },
@@ -9,6 +9,6 @@
     "name": "Mechanical Parts"
   },
   "MaterialItem": {
-    "icon": "IRLCorp:IRLCorp.MechanicalParts"
+    "icon": "IRLCorp:IRLCorp#MechanicalParts"
   }
 }

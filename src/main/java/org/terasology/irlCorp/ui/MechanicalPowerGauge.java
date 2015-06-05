@@ -57,6 +57,6 @@ public class MechanicalPowerGauge extends CoreWidget implements WorkstationUI {
 
     @Override
     public Vector2i getPreferredContentSize(Canvas canvas, Vector2i sizeHint) {
-        return content.getPreferredContentSize(canvas, sizeHint);
+        return content == null ? sizeHint : content.getPreferredContentSize(canvas, sizeHint);
     }
 }

@@ -4,7 +4,7 @@
   },
   "MaterialItemInput": {
     "itemCounts": {
-      "ManualLabor:Chunks.SubstanceMatters:Coal": 1
+      "SubstanceMatters:MaterialItem#ManualLabor:Chunks|SubstanceMatters:Coal": 1
     }
   },
   "ActivateEngineOutput": {
