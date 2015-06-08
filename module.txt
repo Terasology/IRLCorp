@@ -1,6 +1,6 @@
 {
     "id" : "IRLCorp",
-    "version" : "0.1.0",
+    "version" : "0.1.1-SNAPSHOT",
     "author" : "Josharias",
     "displayName" : "IRL Corp",
     "description" : "IRL Corp - for the industrialized reduction of labor",
