@@ -1,16 +1,16 @@
 {
-    "basedOn" : "Machines:WoodenMachine",
-    "displayName": "Wooden Axle",
+  "basedOn": "Machines:WoodenMachine",
+  "displayName": "Wooden Axle",
+  "tile": "IRLCorp:Transparent",
+  "translucent": true,
+  "entity": {
+    "prefab": "WoodenAxle"
+  },
+  "shape": "StructuralResources:Conn4TwoConLine",
+  "rotation": "surfacePlacement",
+  "shadowCasting": false,
+  "archetype": {
     "tile": "Core:Plank",
-    "entity":
-    {
-        "prefab" : "WoodenAxle"
-    },
-    "shape": "StructuralResources:Conn4TwoConLine",
-    "rotation" : "surfacePlacement",
-    "sides" : { },
-    "top" : { },
-    "bottom" : { },
-    "invisible": true,
-    "shadowCasting": false
+    "translucent": false
+  }
 }

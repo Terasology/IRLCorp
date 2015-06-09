@@ -1,16 +1,16 @@
 {
-    "basedOn" : "Machines:MetalMachine",
-    "displayName": "Axle",
-    "tile": "MachineCasing",
-    "entity":
-    {
-        "prefab" : "Axle"
-    },
-    "shape": "StructuralResources:Conn4TwoConLine",
-    "rotation" : "surfacePlacement",
-    "sides" : { },
-    "top" : { },
-    "bottom" : { },
-    "invisible": true,
-    "shadowCasting": false
+  "basedOn": "Machines:MetalMachine",
+  "displayName": "Axle",
+  "tile": "IRLCorp:Transparent",
+  "translucent": true,
+  "entity": {
+    "prefab": "Axle"
+  },
+  "shape": "StructuralResources:Conn4TwoConLine",
+  "rotation": "surfacePlacement",
+  "shadowCasting": false,
+  "archetype": {
+    "tile": "IRLCorp:MachineCasing",
+    "translucent": false
+  }
 }
