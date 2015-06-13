@@ -1,0 +1,12 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "rotation": "horizontal",
+  "tiles": {
+    "all": "MachineCasing",
+    "front": "Sifter"
+  },
+  "displayName": "Sifter",
+  "entity": {
+    "prefab": "Sifter"
+  }
+}

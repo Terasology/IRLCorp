@@ -1,0 +1,33 @@
+{
+  "InteractionTarget": {},
+  "InteractionScreen": {
+    "screen": "Machines:DefaultMachine"
+  },
+  "Workstation": {
+    "supportedProcessTypes": {
+      "ManualLabor:Sifting": true
+    }
+  },
+  "MachineDefinition": {
+    "inputSlots": 1,
+    "requirementSlots": 0,
+    "outputSlots": 2,
+    "actionTitle": "Sift",
+    "inputWidgets": [
+      "IRLCorp:MechanicalPowerGauge",
+      "Machines:InputFluidsWidget"
+    ]
+  },
+  "FluidInventory": {
+    "fluidSlots": [0],
+    "maximumVolumes": [4000]
+  },
+  "FluidTransportBlockNetwork": {},
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 200
+  },
+  "MechanicalPowerBlockNetwork": {},
+  "DropBlockInventory": {},
+  "Network": {
+  }
+}
