@@ -1,7 +1,7 @@
 {
   "FluidInventory": {
       "fluidSlots": [ 0 ],
-      "maximumVolumes": [ 50 ]
+      "maximumVolumes": [10000]
   },
   "FluidTankDisplay": {
   },
