@@ -24,5 +24,10 @@
   "MechanicalPowerBlockNetwork": {},
   "DropBlockInventory": {},
   "Network": {
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The crusher can automatically crush all your ores into chunks.  Just give it some power."
+    ]
   }
 }

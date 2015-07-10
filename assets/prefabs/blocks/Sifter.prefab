@@ -29,5 +29,10 @@
   "MechanicalPowerBlockNetwork": {},
   "DropBlockInventory": {},
   "Network": {
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The sifter can automatically sift all your ores chunks into their separate substances.  Just give it some power."
+    ]
   }
 }

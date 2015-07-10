@@ -1,7 +1,13 @@
 {
     "FluidPipe": {
-        "maximumFlowRate": 3
+        "maximumFlowRate": 100
     },
     "FluidTransportBlockNetwork": {},
-    "Network": {}
+    "Network": {},
+    "ItemHelp": {
+        "paragraphText": [
+            "The fluid pipe can hook up to any tank and fill or drain its fluid.",
+            "Gravity will automatically drain fluid to any other tank below this one that is also connected with a fluid pipe."
+        ]
+    }
 }

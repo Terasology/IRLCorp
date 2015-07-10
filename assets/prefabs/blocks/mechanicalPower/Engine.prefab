@@ -16,5 +16,10 @@
   },
   "MechanicalPowerBlockNetwork": {},
   "DropBlockInventory": {},
-  "Network": {}
+  "Network": {},
+  "ItemHelp": {
+    "paragraphText": [
+      "This engine uses solid fuel to generate power.  It produces 5 power as long as it has fuel."
+    ]
+  }
 }

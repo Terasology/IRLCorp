@@ -6,5 +6,11 @@
   "FluidTankDisplay": {
   },
   "FluidTransportBlockNetwork": {},
-  "Network": {}
+  "Network": {},
+  "ItemHelp": {
+    "paragraphText": [
+      "The fluid tank can hold 10,000 mL.  Use a full bucket to fill the tank.  And an empty bucket to drain.",
+      "Alternatively, you can also use fluid pipes to transfer fluids into and out of the tank."
+    ]
+  }
 }

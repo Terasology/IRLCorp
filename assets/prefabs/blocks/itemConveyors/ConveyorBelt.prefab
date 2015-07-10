@@ -20,6 +20,11 @@
     "blockSize": 0.5
   },
   "Network": {
-    
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The conveyor belt can transport items from A to B.",
+      "The placement direction is based on what surface you are pointing at."
+    ]
   }
 }

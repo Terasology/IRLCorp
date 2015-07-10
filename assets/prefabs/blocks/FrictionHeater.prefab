@@ -17,5 +17,10 @@
   },
   "MechanicalPowerBlockNetwork": {},
   "Network": {
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The friction heater can be used instead of a fireplace.  Just give it some power."
+    ]
   }
 }

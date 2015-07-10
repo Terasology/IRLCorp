@@ -14,5 +14,11 @@
     "maximumStoredPower": 100
   },
   "MechanicalPowerBlockNetwork": {},
-  "Network": {}
+  "Network": {},
+  "ItemHelp": {
+    "paragraphText": [
+      "The fluid pump will take fluid out of the world (like the ocean or lake) or a tank.  Hook it up to power and it will start pumping fluid.",
+      "The amount of power provided will determine how many blocks up the pump can send liquid."
+    ]
+  }
 }

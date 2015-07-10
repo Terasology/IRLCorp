@@ -10,5 +10,11 @@
         "renderedBlockFamily": "ManualLabor:IronBox:StructuralResources:Conn4TwoConLine"
     },
     "DropBlockInventory": {},
-    "Network": {}
+    "Network": {},
+    "ItemHelp": {
+        "paragraphText": [
+            "The axle transfers power from one block to another.  Line up a bunch of them to get power from your power source to your other machines.",
+            "Axles can only be placed in straight lines, use gearboxes to change their direction."
+        ]
+    }
 }

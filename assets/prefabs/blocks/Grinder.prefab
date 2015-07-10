@@ -24,5 +24,10 @@
   "MechanicalPowerBlockNetwork": {},
   "DropBlockInventory": {},
   "Network": {
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The grinder can automatically grind all your ore chunks into dust.  Just give it some power."
+    ]
   }
 }
