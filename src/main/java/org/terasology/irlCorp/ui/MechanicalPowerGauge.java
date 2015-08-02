@@ -17,7 +17,7 @@ package org.terasology.irlCorp.ui;
 
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.machines.ui.VerticalProgressBar;
-import org.terasology.math.Vector2i;
+import org.terasology.math.geom.Vector2i;
 import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
 import org.terasology.rendering.nui.Canvas;
 import org.terasology.rendering.nui.CoreWidget;
