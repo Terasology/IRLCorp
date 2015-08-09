@@ -5,7 +5,9 @@
   },
   "FluidTankDisplay": {
   },
-  "FluidTransportBlockNetwork": {},
+  "EntityNetwork": {
+    "connectionsPrefab": "Machines:TankNetworkConnection"
+  },
   "Network": {},
   "ItemHelp": {
     "paragraphText": [

@@ -4,7 +4,8 @@
   "tile": "IRLCorp:Transparent",
   "translucent": true,
   "entity": {
-    "prefab": "Axle"
+    "prefab": "Axle",
+    "keepActive": true
   },
   "shape": "StructuralResources:Conn4TwoConLine",
   "rotation": "surfacePlacement",

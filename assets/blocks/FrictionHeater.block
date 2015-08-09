@@ -6,6 +6,7 @@
   },
   "displayName": "Friction Heater",
   "entity": {
-    "prefab": "FrictionHeater"
+    "prefab": "FrictionHeater",
+    "keepActive": true
   }
 }

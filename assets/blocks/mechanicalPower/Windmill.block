@@ -2,7 +2,8 @@
     "basedOn" : "Machines:WoodenMachine",
     "displayName": "Windmill",
     "entity": {
-        "prefab": "Windmill"
+        "prefab": "Windmill",
+        "keepActive": true
     },
     "tiles": {
         "all": "windmill",

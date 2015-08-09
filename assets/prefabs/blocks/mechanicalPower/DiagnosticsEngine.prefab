@@ -3,6 +3,8 @@
     "power": 50,
     "active": true
   },
-  "MechanicalPowerBlockNetwork": {},
+  "EntityNetwork": {
+    "connectionsPrefab": "Machines:GearboxNetworkConnection"
+  },
   "Network": {}
 }

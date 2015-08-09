@@ -14,7 +14,9 @@
   "MechanicalPowerProducer": {
     "power": 5
   },
-  "MechanicalPowerBlockNetwork": {},
+  "EntityNetwork": {
+    "connectionsPrefab": "Machines:GearboxNetworkConnection"
+  },
   "DropBlockInventory": {},
   "Network": {},
   "ItemHelp": {

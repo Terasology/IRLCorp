@@ -4,7 +4,8 @@
   "tile": "IRLCorp:Transparent",
   "translucent": true,
   "entity": {
-    "prefab": "WoodenAxle"
+    "prefab": "WoodenAxle",
+    "keepActive": true
   },
   "shape": "StructuralResources:Conn4TwoConLine",
   "rotation": "surfacePlacement",

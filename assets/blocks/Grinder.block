@@ -7,6 +7,7 @@
     },
     "displayName": "Grinder",
     "entity": {
-        "prefab": "Grinder"
+        "prefab": "Grinder",
+        "keepActive": true
     }
 }

@@ -8,6 +8,7 @@
   "rotation" : "surfacePlacement",
   "sides" : { },
   "entity": {
-    "prefab": "ItemExtractor"
+    "prefab": "ItemExtractor",
+    "keepActive": true
   }
 }

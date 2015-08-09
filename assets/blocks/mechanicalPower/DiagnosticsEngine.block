@@ -4,6 +4,7 @@
   },
   "displayName": "Diagnostics Engine",
   "entity": {
-    "prefab": "DiagnosticsEngine"
+    "prefab": "DiagnosticsEngine",
+    "keepActive": true
   }
 }

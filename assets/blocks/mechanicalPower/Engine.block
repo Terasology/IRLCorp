@@ -5,6 +5,7 @@
     },
     "displayName": "Engine",
     "entity": {
-        "prefab": "Engine"
+        "prefab": "Engine",
+        "keepActive": true
     }
 }

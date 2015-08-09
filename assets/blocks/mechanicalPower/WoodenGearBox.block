@@ -1,7 +1,8 @@
 {
   "basedOn": "Machines:WoodenMachine",
   "tiles": {
-    "all": "WoodenGearBox"
+    "all": "WoodenGearBox",
+    "keepActive": true
   },
   "displayName": "Wooden Gear Box",
   "entity": {

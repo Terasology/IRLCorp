@@ -1,7 +1,8 @@
 {
     "displayName": "Iron Fluid Pump",
     "entity": {
-        "prefab": "IronFluidPump"
+        "prefab": "IronFluidPump",
+        "keepActive": true
     },
     "shape": "StructuralResources:Conn8TwoConLine",
     "rotation": "Machines:fluidPipe",

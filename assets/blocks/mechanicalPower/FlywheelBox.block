@@ -2,7 +2,8 @@
     "basedOn" : "Machines:WoodenMachine",
     "displayName": "Flywheel Box",
     "entity": {
-        "prefab": "FlywheelBox"
+        "prefab": "FlywheelBox",
+        "keepActive": true
     }
 
 }

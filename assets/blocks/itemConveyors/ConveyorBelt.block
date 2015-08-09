@@ -10,6 +10,7 @@
   "rotation" : "surfacePlacement",
   "sides" : { },
   "entity": {
-    "prefab": "ConveyorBelt"
+    "prefab": "ConveyorBelt",
+    "keepActive": true
   }
 }

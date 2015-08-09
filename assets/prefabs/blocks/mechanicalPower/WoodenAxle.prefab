@@ -1,9 +1,6 @@
 {
-    "MechanicalPowerBlockNetwork": {
-        "directions": [
-            "FORWARD",
-            "BACKWARD"
-        ]
+    "EntityNetwork": {
+        "connectionsPrefab": "Machines:AxleNetworkConnection"
     },
     "MechanicalPowerConductor": {},
     "RotatingAxle": {

@@ -7,6 +7,7 @@
     },
     "displayName": "Crusher",
     "entity": {
-        "prefab": "Crusher"
+        "prefab": "Crusher",
+        "keepActive": true
     }
 }

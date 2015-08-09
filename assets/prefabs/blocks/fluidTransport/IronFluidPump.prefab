@@ -7,13 +7,14 @@
   "FluidPump": {
     "maximumFlowRate": 10
   },
-  "FluidTransportBlockNetwork": {},
   "MachineDefinition": {
   },
   "MechanicalPowerConsumer": {
     "maximumStoredPower": 100
   },
-  "MechanicalPowerBlockNetwork": {},
+  "EntityNetwork": {
+    "connectionsPrefab": "Machines:PumpNetworkConnection"
+  },
   "Network": {},
   "ItemHelp": {
     "paragraphText": [
