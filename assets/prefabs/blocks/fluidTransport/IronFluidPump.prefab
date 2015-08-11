@@ -5,7 +5,7 @@
     }
   },
   "FluidPump": {
-    "maximumFlowRate": 10
+    "maximumFlowRate": 100
   },
   "MachineDefinition": {
   },

@@ -1,4 +1,5 @@
 {
+  "basedOn": "Machines:MetalMachine",
   "displayName": "Fluid Tank",
   "rotation": "horizontal",
   "entity": {

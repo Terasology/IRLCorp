@@ -1,0 +1,7 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "displayName": "Fluid Tank Valve",
+  "entity": {
+    "prefab": "MultiBlockTankValve"
+  }
+}

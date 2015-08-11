@@ -1,0 +1,9 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "translucent": true,
+  "displayName": "Fluid Tank Glass",
+  "shadowCasting": false,
+  "entity": {
+    "prefab": "MultiBlockTankWall"
+  }
+}
