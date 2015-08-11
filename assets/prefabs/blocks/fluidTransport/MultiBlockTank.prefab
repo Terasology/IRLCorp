@@ -1,0 +1,13 @@
+{
+  "FluidInventory": {
+    "fluidSlots": [0],
+    "maximumVolumes": [10000]
+  },
+  "FluidTankDisplay": {},
+  "Network": {},
+  "ActAsBlock": {
+    "block": "IRLCorp:MultiBlockTankWall",
+    "dropBlocksInRegion": true
+  },
+  "MultiBlockFluidTank": {}
+}

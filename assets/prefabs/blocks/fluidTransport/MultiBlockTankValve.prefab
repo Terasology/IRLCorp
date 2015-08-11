@@ -1,0 +1,11 @@
+{
+  "FluidInventory": {
+    "fluidSlots": [0],
+    "maximumVolumes": [0]
+  },
+  "MultiBlockTankWall": {},
+  "EntityNetwork": {
+    "connectionsPrefab": "Machines:TankNetworkConnection"
+  },
+  "Network": {}
+}

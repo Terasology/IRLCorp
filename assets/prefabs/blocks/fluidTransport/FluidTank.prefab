@@ -3,6 +3,7 @@
       "fluidSlots": [ 0 ],
       "maximumVolumes": [10000]
   },
+  "FluidTankDropsFluid": {},
   "FluidTankDisplay": {
   },
   "EntityNetwork": {
