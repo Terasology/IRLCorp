@@ -1,0 +1,13 @@
+{
+  "EntityNetwork": {},
+  "HeatBlockNetwork": {
+    "isLeaf": false
+  },
+  "Network": {
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The heat pipe can transfer heat from A to B."
+    ]
+  }
+}

@@ -2,8 +2,9 @@
     "FluidPipe": {
         "maximumFlowRate": 100
     },
-    "EntityNetwork": {
-        "connectionsPrefab": "Machines:PipeNetworkConnection"
+    "EntityNetwork": {},
+    "FluidTransportBlockNetwork": {
+        "isLeaf": false
     },
     "Network": {},
     "ItemHelp": {

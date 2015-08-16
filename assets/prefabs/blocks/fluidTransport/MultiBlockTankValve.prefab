@@ -4,8 +4,9 @@
     "maximumVolumes": [0]
   },
   "MultiBlockTankWall": {},
-  "EntityNetwork": {
-    "connectionsPrefab": "Machines:TankNetworkConnection"
+  "EntityNetwork": {},
+  "FluidTransportBlockNetwork": {
+    "isLeaf": true
   },
   "Network": {}
 }

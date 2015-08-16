@@ -12,8 +12,12 @@
   "MechanicalPowerConsumer": {
     "maximumStoredPower": 100
   },
-  "EntityNetwork": {
-    "connectionsPrefab": "Machines:PumpNetworkConnection"
+  "EntityNetwork": {},
+  "FluidTransportBlockNetwork": {
+    "isLeaf": false
+  },
+  "MechanicalPowerBlockNetwork": {
+    "isLeaf": false
   },
   "Network": {},
   "ItemHelp": {

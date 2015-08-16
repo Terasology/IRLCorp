@@ -1,6 +1,11 @@
 {
-    "EntityNetwork": {
-        "connectionsPrefab": "Machines:AxleNetworkConnection"
+    "EntityNetwork": {},
+    "MechanicalPowerSidedBlockNetwork": {
+        "isLeaf": false,
+        "directions": [
+            "FORWARD",
+            "BACKWARD"
+        ]
     },
     "MechanicalPowerConductor": {},
     "RotatingAxle": {

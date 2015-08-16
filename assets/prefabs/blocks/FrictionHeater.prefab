@@ -15,8 +15,12 @@
   "MechanicalPowerConsumer": {
     "maximumStoredPower": 50
   },
-  "EntityNetwork": {
-    "connectionsPrefab": "Machines:MachineNetworkConnection"
+  "EntityNetwork": {},
+  "MechanicalPowerBlockNetwork": {
+    "isLeaf": false
+  },
+  "HeatBlockNetwork": {
+    "isLeaf": true
   },
   "Network": {
   },
