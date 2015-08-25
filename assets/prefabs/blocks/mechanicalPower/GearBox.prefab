@@ -1,8 +1,7 @@
 {
-    "MechanicalPowerConductor": {
-    },
-    "EntityNetwork": {
-        "connectionPrefabs": ["Machines:GearboxNetworkConnection"]
+    "EntityNetwork": {},
+    "MechanicalPowerBlockNetwork": {
+        "isLeaf": false
     },
     "Network": {},
     "ItemHelp": {

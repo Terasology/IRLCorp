@@ -7,7 +7,6 @@
             "BACKWARD"
         ]
     },
-    "MechanicalPowerConductor": {},
     "RotatingAxle": {
         "renderedBlockFamily": "Core:Plank:StructuralResources:Conn4TwoConLine"
     },

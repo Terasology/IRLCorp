@@ -1,0 +1,14 @@
+{
+  "ProcessDefinition": {
+    "processType": "IRLCorp:SteamEngine"
+  },
+  "FluidInput": {
+    "fluidVolumes": {
+      "fluid:water": 10
+    }
+  },
+  "HeatInput": {},
+  "ActivateEngineOutput": {
+    "activateTime": 10000
+  }
+}

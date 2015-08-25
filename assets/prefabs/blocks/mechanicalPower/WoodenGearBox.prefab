@@ -1,6 +1,4 @@
 {
-    "MechanicalPowerConductor": {
-    },
     "EntityNetwork": {},
     "MechanicalPowerBlockNetwork": {
         "isLeaf": false
