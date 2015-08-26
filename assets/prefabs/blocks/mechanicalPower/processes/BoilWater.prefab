@@ -1,0 +1,19 @@
+{
+  "ProcessDefinition": {
+    "processType": "IRLCorp:Boiling"
+  },
+  "FluidInput": {
+    "fluidVolumes": {
+      "fluid:water": 10
+    }
+  },
+  "FluidOutput": {
+    "fluidVolumes": {
+      "IRLCorp:steam": 100
+    }
+  },
+  "HeatInput": {},
+  "ProcessingTime": {
+    "duration": 10000
+  }
+}

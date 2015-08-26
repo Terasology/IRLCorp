@@ -1,0 +1,12 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "rotation": "horizontal",
+  "tiles": {
+    "all": "Boiler"
+  },
+  "displayName": "Boiler",
+  "entity": {
+    "prefab": "IRLCorp:Boiler",
+    "keepActive": true
+  }
+}

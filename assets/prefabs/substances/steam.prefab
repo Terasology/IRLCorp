@@ -1,0 +1,9 @@
+{
+  "substance": {
+    "name": "Steam",
+    "hue": 232,
+    "saturationScale": 0.25,
+    "brightnessScale": 1.2
+  },
+  "fluidsubstance": {}
+}

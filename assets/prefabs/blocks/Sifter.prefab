@@ -12,15 +12,12 @@
     "inputSlots": 1,
     "requirementSlots": 0,
     "outputSlots": 2,
+    "fluidInputSlotVolumes": [4000],
     "actionTitle": "Sift",
     "inputWidgets": [
       "IRLCorp:MechanicalPowerGauge",
       "Machines:InputFluidsWidget"
     ]
-  },
-  "FluidInventory": {
-    "fluidSlots": [0],
-    "maximumVolumes": [4000]
   },
   "FluidTransportBlockNetwork": {},
   "MechanicalPowerConsumer": {

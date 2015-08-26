@@ -1,6 +1,6 @@
 {
   "MachineDefinition": {
-    "fluidInputSlotVolumes": [500],
+    "fluidInputSlotVolumes": [2000],
     "fluidOutputSlotVolumes": [2000],
     "inputWidgets": [
       "Machines:InputFluidsWidget"
@@ -15,15 +15,12 @@
   },
   "Workstation": {
     "supportedProcessTypes": {
-      "IRLCorp:SteamEngine": true
+      "IRLCorp:Boiling": true
     }
   },
-  "MechanicalPowerProducer": {
-    "power": 10
-  },
   "EntityNetwork": {},
-  "MechanicalPowerBlockNetwork": {
-    "isLeaf": false
+  "HeatBlockNetwork": {
+    "isLeaf": true
   },
   "FluidTransportBlockNetwork": {
     "isLeaf": true

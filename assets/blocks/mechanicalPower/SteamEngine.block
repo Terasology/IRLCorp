@@ -1,0 +1,12 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "rotation": "horizontal",
+  "tiles": {
+    "all": "SteamEngine"
+  },
+  "displayName": "Steam Engine",
+  "entity": {
+    "prefab": "IRLCorp:SteamEngine",
+    "keepActive": true
+  }
+}

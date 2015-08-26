@@ -4,10 +4,14 @@
   },
   "FluidInput": {
     "fluidVolumes": {
-      "fluid:water": 10
+      "IRLCorp:steam": 50
     }
   },
-  "HeatInput": {},
+  "FluidOutput": {
+    "fluidVolumes": {
+      "fluid:water": 4.5
+    }
+  },
   "ActivateEngineOutput": {
     "activateTime": 10000
   }
