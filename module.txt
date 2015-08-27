@@ -9,7 +9,7 @@
         {"id": "ManualLabor", "minVersion": "0.1.0"},
         {"id": "Machines", "minVersion": "0.1.0"},
         {"id": "StructuralResources", "minVersion": "0.2.0"},
-        {"id": "Journal", "minVersion": "0.1.0"},
+        {"id": "InGameHelp", "minVersion": "0.1.0"},
         {"id": "Durability", "minVersion": "0.1.0"},
         {"id": "MultiBlock", "minVersion": "0.1.0"}
     ]
