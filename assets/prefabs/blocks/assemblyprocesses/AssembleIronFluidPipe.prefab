@@ -1,0 +1,19 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:Assembling"
+  },
+  "RequirementInput": {
+    "requirements": ["Pliers"]
+  },
+  "MaterialItemInput": {
+    "itemCounts": {
+      "SubstanceMatters:MaterialItem#Manuallabor:Sheet|SubstanceMatters:Iron": 1,
+      "ManualLabor:Bolt" : 2
+    }
+  },
+  "BlockFamilyOutput": {
+    "blockCounts": {
+      "IRLCorp:IronFluidPipe": 1
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "ItemPrefabInput": {
+        "itemCounts": {
+            "IRLCorp:WoodenMechanicalParts": 1
+        }
+    },
+    "BlockFamilyInput": {
+        "blockCounts": {
+            "IRLCorp:WoodenGearBox": 1
+        }
+    },
+    "BlockFamilyOutput": {
+        "blockCounts": {
+            "IRLCorp:WindMill": 1
+        }
+    }
+}
