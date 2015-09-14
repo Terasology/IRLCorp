@@ -15,7 +15,7 @@
     "actionTitle": "Saw",
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
-  "ProcessRequirementsProvider": {
+  "ProcessRequirementsProviderFromWorkstation": {
      "requirements": ["Saw"]
   },
   "MechanicalPowerConsumer": {

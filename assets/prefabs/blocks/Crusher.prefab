@@ -15,7 +15,7 @@
     "actionTitle": "Crush",
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
-  "ProcessRequirementsProvider": {
+  "ProcessRequirementsProviderFromWorkstation": {
     "requirements": ["SledgeHammer"]
   },
   "MechanicalPowerConsumer": {

@@ -15,7 +15,7 @@
     "actionTitle": "Grind",
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
-  "ProcessRequirementsProvider": {
+  "ProcessRequirementsProviderFromWorkstation": {
      "requirements": ["FineHammer"]
   },
   "MechanicalPowerConsumer": {
