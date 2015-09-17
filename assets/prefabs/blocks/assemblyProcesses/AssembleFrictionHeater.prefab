@@ -1,0 +1,19 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:Assembling"
+  },
+  "RequirementInput": {
+    "requirements": ["Wrench"]
+  },
+  "BlockFamilyInput": {
+    "blockCounts": {
+      "IRLCorp:GearBox": 1,
+      "IRLCorp:HeatDuct": 1
+    }
+  },
+  "BlockFamilyOutput": {
+    "blockCounts": {
+      "IRLCorp:FrictionHeater": 1
+    }
+  }
+}

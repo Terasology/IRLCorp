@@ -17,7 +17,7 @@
     },
     "BlockFamilyOutput": {
         "blockCounts": {
-            "IRLCorp:IronFluidPipe": 1
+            "IRLCorp:IronFluidPump": 1
         }
     }
 }

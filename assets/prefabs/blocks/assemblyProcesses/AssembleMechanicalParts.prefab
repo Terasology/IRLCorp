@@ -1,0 +1,18 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:Assembling"
+  },
+  "RequirementInput": {
+    "requirements": ["Mallet"]
+  },
+  "MaterialItemInput": {
+    "itemCounts": {
+      "ManualLabor:Rod": 2,
+      "ManualLabor:Bolt": 5
+    }
+  },
+  "MaterialItemOutput": {
+    "item": "IRLCorp:MechanicalParts",
+    "amount": 1
+  }
+}

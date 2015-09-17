@@ -1,8 +1,8 @@
 {
   "basedOn": "Machines:MetalMachine",
-  "displayName": "Heat Pipe",
+  "displayName": "Heat Duct",
   "entity": {
-    "prefab": "HeatPipe",
+    "prefab": "HeatDuct",
     "keepActive": true
   },
   "shape": "StructuralResources:Conn8TwoConLine",
