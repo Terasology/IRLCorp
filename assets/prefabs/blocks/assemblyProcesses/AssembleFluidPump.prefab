@@ -7,7 +7,7 @@
     },
     "BlockFamilyInput": {
         "blockCounts": {
-            "IRLCorp:IronFluidPipe": 2
+            "IRLCorp:FluidPipe": 2
         }
     },
     "MaterialItemInput": {
@@ -17,7 +17,7 @@
     },
     "BlockFamilyOutput": {
         "blockCounts": {
-            "IRLCorp:IronFluidPump": 1
+            "IRLCorp:FluidPump": 1
         }
     }
 }

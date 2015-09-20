@@ -7,9 +7,11 @@
   },
   "MaterialItemInput": {
     "itemCounts": {
-      "SubstanceMatters:MaterialItem#Manuallabor:Sheet|SubstanceMatters:Iron": 1,
+      "ManualLabor:Sheet": 1,
       "ManualLabor:Screw": 2
     }
+  },
+  "MetalSubstanceRequirement": {
   },
   "BlockFamilyOutput": {
     "blockCounts": {

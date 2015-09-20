@@ -5,11 +5,13 @@
     "RequirementInput": {
         "requirements": ["Pliers"]
     },
-    "ItemPrefabInput": {
+    "MaterialItemInput": {
         "itemCounts": {
-            "SubstanceMatters:MaterialItem#ManualLabor:Rod|SubstanceMatters:Iron": 1,
+            "ManualLabor:Rod": 1,
             "ManualLabor:Bolt": 2
         }
+    },
+    "MetalSubstanceRequirement": {
     },
     "BlockFamilyOutput": {
         "blockCounts": {

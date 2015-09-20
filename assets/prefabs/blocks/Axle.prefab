@@ -8,7 +8,7 @@
         ]
     },
     "RotatingAxle": {
-        "renderedBlockFamily": "ManualLabor:IronBox:StructuralResources:Conn4TwoConLine"
+        "renderedBlockFamily": "ManualLabor:MetalBox:StructuralResources:Conn4TwoConLine"
     },
     "DropBlockInventory": {},
     "Network": {},

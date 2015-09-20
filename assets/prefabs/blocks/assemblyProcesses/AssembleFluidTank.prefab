@@ -7,7 +7,7 @@
   },
   "BlockFamilyInput": {
     "blockCounts": {
-      "IRLCorp:IronFluidPipe": 1,
+      "IRLCorp:FluidPipe": 1,
       "ManualLabor:DirtyGlass": 8
     }
   },

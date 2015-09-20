@@ -7,7 +7,7 @@
     },
     "BlockFamilyInput": {
         "blockCounts": {
-            "ManualLabor:IronBox": 1,
+            "ManualLabor:MetalBox": 1,
             "IRLCorp:Axle": 1
         }
     },

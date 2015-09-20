@@ -7,13 +7,15 @@
   },
   "MaterialItemInput": {
     "itemCounts": {
-      "SubstanceMatters:MaterialItem#Manuallabor:Sheet|SubstanceMatters:Iron": 1,
+      "ManualLabor:Sheet": 1,
       "ManualLabor:Bolt" : 2
     }
   },
+  "MetalSubstanceRequirement": {
+  },
   "BlockFamilyOutput": {
     "blockCounts": {
-      "IRLCorp:IronFluidPipe": 1
+      "IRLCorp:FluidPipe": 1
     }
   }
 }

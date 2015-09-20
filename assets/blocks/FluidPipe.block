@@ -1,8 +1,8 @@
 {
     "basedOn": "Machines:MetalMachine",
-    "displayName": "Iron Fluid Pipe",
+    "displayName": "Fluid Pipe",
     "entity": {
-        "prefab": "IronFluidPipe",
+        "prefab": "FluidPipe",
         "keepActive": true
     },
     "shape": "StructuralResources:Conn8TwoConLine",
