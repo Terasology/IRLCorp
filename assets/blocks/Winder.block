@@ -1,0 +1,13 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "rotation": "horizontal",
+  "tiles": {
+    "all": "MachineCasing",
+    "front": "Winder"
+  },
+  "displayName": "Winder",
+  "entity": {
+    "prefab": "Winder",
+    "keepActive": true
+  }
+}

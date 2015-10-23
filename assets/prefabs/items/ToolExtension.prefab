@@ -1,0 +1,29 @@
+{
+  "parent": "engine:iconItem",
+  "Item": {
+    "icon": "IRLCorp:IRLCorp#ToolExtension",
+    "stackId": "IRLCorp:ToolExtension",
+    "renderWithIcon": true
+  },
+  "DisplayName": {
+    "name": "Tool Extension"
+  },
+  "MaterialItem": {
+    "icon": "IRLCorp:IRLCorp#ToolExtension"
+  },
+  "MechanicalPowerToolPart": {},
+  "MechanicalPowerToolDamageAdjacent": {
+    "directions": [
+      [
+        0,
+        -1,
+        0
+      ]
+    ]
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The tool extension allows a powered tool to also damage a block directly below the targeted block at the cost of power."
+    ]
+  }
+}

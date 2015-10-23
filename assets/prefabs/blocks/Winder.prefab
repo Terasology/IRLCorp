@@ -1,0 +1,37 @@
+{
+  "InteractionTarget": {},
+  "InteractionScreen": {
+    "screen": "Machines:DefaultMachine"
+  },
+  "Workstation": {
+    "supportedProcessTypes": {
+      "IRLCorp:Winding": true
+    }
+  },
+  "MachineDefinition": {
+    "inputSlots": 1,
+    "requirementSlots": 0,
+    "outputSlots": 1,
+    "actionTitle": "Wind",
+    "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
+  },
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 200
+  },
+  "MechanicalPowerWinder": {
+    "recoveryTime": 1000,
+    "maxTransferAmount": 5
+  },
+  "EntityNetwork": {},
+  "MechanicalPowerBlockNetwork": {
+    "isLeaf": false
+  },
+  "DropBlockInventory": {},
+  "Network": {
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "The winder can wind up all your tools."
+    ]
+  }
+}
