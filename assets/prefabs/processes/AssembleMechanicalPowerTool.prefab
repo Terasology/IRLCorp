@@ -1,0 +1,9 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:ToolAssembling"
+  },
+  "RequirementInput": {
+    "requirements": ["Screwdriver"]
+  },
+  "CreateMechanicalPowerTool": {}
+}

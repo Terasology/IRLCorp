@@ -1,0 +1,21 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:ToolAssembling"
+  },
+  "RequirementInput": {
+    "requirements": [
+      "Mallet",
+      "Pliers"
+    ]
+  },
+  "MaterialItemInput": {
+    "itemCounts": {
+      "ManualLabor:Rod": 2,
+      "ManualLabor:Plate": 2
+    }
+  },
+  "MaterialItemOutput": {
+    "item": "IRLCorp:ToolExtension",
+    "amount": 1
+  }
+}

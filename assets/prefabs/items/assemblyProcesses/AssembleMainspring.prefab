@@ -1,0 +1,18 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:Assembling"
+  },
+  "RequirementInput": {
+    "requirements": ["Pliers"]
+  },
+  "MaterialItemInput": {
+    "itemCounts": {
+      "IRLCorp:MechanicalParts": 1,
+      "ManualLabor:Plate": 2
+    }
+  },
+  "MaterialItemOutput": {
+    "item": "IRLCorp:Mainspring",
+    "amount": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "parent": "engine:iconItem",
+  "Item": {
+    "icon": "IRLCorp:IRLCorp#Mainspring",
+    "stackId": "IRLCorp:Mainspring",
+    "renderWithIcon": true
+  },
+  "DisplayName": {
+    "name": "Mainspring"
+  },
+  "MaterialItem": {
+    "icon": "IRLCorp:IRLCorp#Mainspring"
+  },
+  "MechanicalPowerToolPart": {},
+  "MechanicalPowerToolIncreaseMaxPower": {
+    "amount": 100
+  },
+  "ItemHelp": {
+    "paragraphText": [
+      "Adding a mainspring to a tool will allow it to store mechanical power.  Adding additional mainsprings increase the maximum amount of power an item can store."
+    ]
+  }
+}
