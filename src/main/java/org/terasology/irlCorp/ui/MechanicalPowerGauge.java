@@ -51,6 +51,9 @@ public class MechanicalPowerGauge extends CoreWidget implements WorkstationUI {
             if (consumer != null) {
                 float value = consumer.currentStoredPower / consumer.maximumStoredPower;
                 powerMeter.setValue(value);
+
+                setTooltipDelay(0);
+                setTooltip(String.format("Power: %.0f/%.0f", consumer.currentStoredPower, consumer.maximumStoredPower));
             }
         }
     }
