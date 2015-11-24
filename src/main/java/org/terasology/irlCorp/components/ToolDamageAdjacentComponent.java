@@ -15,8 +15,23 @@
  */
 package org.terasology.irlCorp.components;
 
+import com.google.common.collect.Lists;
 import org.terasology.entitySystem.Component;
+import org.terasology.math.geom.Vector3i;
 
-public class MechanicalPowerToolDamageAdjacentComponent implements Component {
-    public int amount = 1;
+import java.util.List;
+
+public class ToolDamageAdjacentComponent implements Component {
+    public static Vector3i[] orderedDirections = {
+            new Vector3i(0, -1, 0),
+            new Vector3i(-1, 0, 0),
+            new Vector3i(1, 0, 0),
+            new Vector3i(0, 1, 0),
+            new Vector3i(-1, -1, 0),
+            new Vector3i(-1, 1, 0),
+            new Vector3i(1, 1, 0),
+            new Vector3i(1, -1, 0)
+    };
+
+    public List<Vector3i> directions = Lists.newArrayList();
 }

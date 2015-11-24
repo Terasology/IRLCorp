@@ -15,20 +15,60 @@
  */
 package org.terasology.irlCorp.systems;
 
+import org.terasology.asset.Assets;
+import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.irlCorp.components.MechanicalPowerToolDamageAdjacentComponent;
+import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
+import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
+import org.terasology.math.geom.Rect2i;
+import org.terasology.math.geom.Vector2i;
+import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
+import org.terasology.rendering.assets.texture.Texture;
+import org.terasology.rendering.assets.texture.TextureUtil;
+import org.terasology.rendering.nui.Canvas;
+import org.terasology.rendering.nui.Color;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
+import org.terasology.rendering.nui.layers.ingame.inventory.InventoryCellRendered;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 
-@RegisterSystem(RegisterMode.AUTHORITY)
+@RegisterSystem(RegisterMode.CLIENT)
 public class MechanicalPowerToolClientSystem extends BaseComponentSystem {
 
     @ReceiveEvent
-    public void getItemTooltip(GetItemTooltip event, EntityRef entityRef, MechanicalPowerToolDamageAdjacentComponent damageAdjacentComponent) {
-        event.getTooltipLines().add(new TooltipLine("Damages Adjacent Blocks"));
+    public void drawPowerToolPowerBar(InventoryCellRendered event, EntityRef entity,
+                                      MechanicalPowerToolComponent powerToolComponent,
+                                      MechanicalPowerConsumerComponent powerConsumerComponent) {
+        Canvas canvas = event.getCanvas();
+
+        Vector2i size = canvas.size();
+
+        int minX = (int) (size.x * 0.1f);
+        int maxX = (int) (size.x * 0.9f);
+
+        int minY = (int) (size.y * 0.7f);
+        int maxY = (int) (size.y * 0.8f);
+
+        float percentage = 1f * powerConsumerComponent.currentStoredPower / powerConsumerComponent.maximumStoredPower;
+
+        ResourceUrn backgroundTexture = TextureUtil.getTextureUriForColor(Color.WHITE);
+
+        final Color terasologyColor = powerToolComponent.active ? Color.GREEN : Color.GREY;
+
+
+        ResourceUrn barTexture = TextureUtil.getTextureUriForColor(terasologyColor);
+
+        canvas.drawTexture(Assets.get(backgroundTexture, Texture.class).get(), Rect2i.createFromMinAndMax(minX, minY, maxX, maxY));
+        int barLength = (int) (percentage * (maxX - minX - 1));
+        int barHeight = maxY - minY - 1;
+        canvas.drawTexture(Assets.get(barTexture, Texture.class).get(), Rect2i.createFromMinAndSize(minX + 1, minY + 1, barLength, barHeight));
+    }
+
+    @ReceiveEvent
+    public void getItemTooltipDamageAdjacent(GetItemTooltip event, EntityRef entityRef, ToolDamageAdjacentComponent damageAdjacentComponent) {
+        event.getTooltipLines().add(new TooltipLine("Damages " + damageAdjacentComponent.directions.size() + " adjacent blocks"));
     }
 }

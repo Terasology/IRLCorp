@@ -16,7 +16,9 @@
 package org.terasology.irlCorp.components;
 
 import org.terasology.entitySystem.Component;
+import org.terasology.network.Replicate;
 
-public class MechanicalPowerToolDamageAdjacentComponent implements Component {
-    public int amount = 1;
+public class MechanicalPowerToolComponent implements Component {
+    @Replicate
+    public Boolean active = true;
 }

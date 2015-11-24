@@ -17,6 +17,7 @@ package org.terasology.irlCorp.processParts;
 
 import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolPartComponent;
 import org.terasology.irlCorp.events.MechanicalPowerToolPartAddedEvent;
 import org.terasology.logic.inventory.InventoryManager;
@@ -63,13 +64,18 @@ public class CreateMechanicalPowerToolComponent implements Component, ProcessPar
         SpecificInputSlotComponent specificInputSlotComponent = processEntity.getComponent(SpecificInputSlotComponent.class);
         EntityRef item = inventoryManager.getItemInSlot(workstation, specificInputSlotComponent.slot);
 
+        MechanicalPowerToolComponent powerToolComponent = new MechanicalPowerToolComponent();
+        if (!item.hasComponent(MechanicalPowerToolComponent.class)) {
+            item.addComponent(powerToolComponent);
+        }
+
         // fire an event for all non-tool items,  removing them if successfully added the part
         for (EntityRef entityRef : ExtendedInventoryManager.iterateItems(inventoryManager, workstation, false, InventoryInputComponent.WORKSTATIONINPUTCATEGORY)) {
             if (entityRef.hasComponent(MechanicalPowerToolPartComponent.class) && !entityRef.equals(item)) {
                 MechanicalPowerToolPartAddedEvent event = new MechanicalPowerToolPartAddedEvent(item);
                 entityRef.send(event);
                 if (event.isSuccess()) {
-                    inventoryManager.removeItem(workstation, instigator, entityRef, true);
+                    inventoryManager.removeItem(workstation, instigator, entityRef, true, 1);
                 }
             }
         }

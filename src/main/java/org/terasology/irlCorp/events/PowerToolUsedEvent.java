@@ -13,10 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.irlCorp.components;
+package org.terasology.irlCorp.events;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.entitySystem.event.AbstractConsumableEvent;
 
-public class MechanicalPowerToolDamageAdjacentComponent implements Component {
-    public int amount = 1;
+public class PowerToolUsedEvent extends AbstractConsumableEvent {
+    float amount;
+
+    public PowerToolUsedEvent() {
+    }
+
+    public PowerToolUsedEvent(float amount) {
+        this.amount = amount;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
 }
+

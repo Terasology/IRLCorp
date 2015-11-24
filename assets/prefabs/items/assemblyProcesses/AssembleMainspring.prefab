@@ -1,6 +1,6 @@
 {
   "ProcessDefinition": {
-    "processType": "ManualLabor:Assembling"
+    "processType": "ManualLabor:ToolAssembling"
   },
   "RequirementInput": {
     "requirements": ["Pliers"]
