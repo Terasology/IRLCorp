@@ -1,0 +1,28 @@
+{
+  "parent": "engine:iconItem",
+  "DisplayName": {
+    "name": "Block Placer"
+  },
+  "Item": {
+    "renderWithIcon": true
+  },
+  "MaterialItem": {
+    "icon": "IRLCorp:IRLCorp#BlockPlacer"
+  },
+  "TintOverlayIcon": {
+    "texture": {
+      "IRLCorp#BlockPlacer": {
+      }
+    }
+  },
+  "MechanicalPowerConsumer": {
+    "maximumStoredPower": 100
+  },
+  "ToolBlockPlacement": {},
+  "MechanicalPowerTool": {},
+  "ItemHelp": {
+    "paragraphText": [
+      "The block placer can place multiple blocks at a time."
+    ]
+  }
+}

@@ -16,25 +16,35 @@
 package org.terasology.irlCorp.systems;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.terasology.RotationUtils;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.input.InputSystem;
+import org.terasology.input.Keyboard;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolDamageAdjacentComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolIncreaseMaxPowerComponent;
+import org.terasology.irlCorp.components.ToolBlockPlacementComponent;
 import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
 import org.terasology.irlCorp.events.BeforePowerToolUsedEvent;
 import org.terasology.irlCorp.events.MechanicalPowerToolPartAddedEvent;
 import org.terasology.irlCorp.events.PowerToolUsedEvent;
 import org.terasology.logic.characters.CharacterComponent;
+import org.terasology.logic.common.ActivateEvent;
 import org.terasology.logic.health.DoDamageEvent;
+import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.logic.location.LocationComponent;
+import org.terasology.machines.ExtendedInventoryManager;
 import org.terasology.math.Direction;
-import org.terasology.math.Rotation;
+import org.terasology.math.Side;
+import org.terasology.math.geom.BaseVector2i;
+import org.terasology.math.geom.SpiralIterable;
+import org.terasology.math.geom.Vector2i;
 import org.terasology.math.geom.Vector3f;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
@@ -44,9 +54,16 @@ import org.terasology.physics.Physics;
 import org.terasology.physics.StandardCollisionGroup;
 import org.terasology.registry.In;
 import org.terasology.world.BlockEntityRegistry;
+import org.terasology.world.WorldProvider;
+import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockComponent;
+import org.terasology.world.block.BlockManager;
+import org.terasology.world.block.entity.placement.PlaceBlocks;
+import org.terasology.world.block.family.BlockFamily;
+import org.terasology.world.block.items.BlockItemComponent;
 
 import java.util.List;
+import java.util.Map;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
@@ -54,8 +71,14 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     BlockEntityRegistry blockEntityRegistry;
     @In
     Physics physics;
+    @In
+    InventoryManager inventoryManager;
+    @In
+    WorldProvider worldProvider;
+    @In
+    InputSystem inputSystem;
 
-    private CollisionGroup[] filter = {StandardCollisionGroup.DEFAULT, StandardCollisionGroup.WORLD};
+    private static CollisionGroup[] filter = {StandardCollisionGroup.DEFAULT, StandardCollisionGroup.WORLD};
 
     @ReceiveEvent
     public void addIncreaseMaxPower(MechanicalPowerToolPartAddedEvent event, EntityRef item, MechanicalPowerToolIncreaseMaxPowerComponent details) {
@@ -113,31 +136,14 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
                 if (!beforePowerToolUsedEvent.isConsumed() && beforePowerToolUsedEvent.isToolPowered() && event.getInstigator().hasComponent(CharacterComponent.class)) {
 
-                    // Copied from LocalPlayer.activateTargetOrOwnedEntity(...)
-                    LocationComponent location = event.getInstigator().getComponent(LocationComponent.class);
-                    CharacterComponent characterComponent = event.getInstigator().getComponent(CharacterComponent.class);
-                    Vector3f direction = characterComponent.getLookDirection();
-                    Vector3f originPos = location.getWorldPosition();
-                    originPos.y += characterComponent.eyeOffset;
-                    HitResult result = physics.rayTrace(originPos, direction, characterComponent.interactionRange, filter);
+                    HitResult result = getHitResult(event.getInstigator(), physics);
 
                     if (result.isWorldHit()) {
                         // loop through each of the directions to damage, reorienting each with what side the block was hit on.
                         for (Vector3i relativePosition : damageAdjacentComponent.directions) {
-                            Direction targetedFace = Direction.inDirection(result.getHitNormal());
-                            Rotation rotation = RotationUtils.getRotation(targetedFace.toSide());
-                            Vector3i rotatedPosition = Vector3i.zero();
-                            if (relativePosition.x != 0) {
-                                rotatedPosition.add(rotation.rotate(Direction.inDirection(relativePosition.x, 0, 0).toSide()).getVector3i());
-                            }
-                            if (relativePosition.y != 0) {
-                                rotatedPosition.add(rotation.rotate(Direction.inDirection(0, relativePosition.y, 0).toSide()).getVector3i());
-                            }
-                            if (relativePosition.z != 0) {
-                                rotatedPosition.add(rotation.rotate(Direction.inDirection(0, 0, relativePosition.z).toSide()).getVector3i());
-                            }
-                            Vector3i adjacentPosition = new Vector3i(blockComponent.getPosition());
-                            adjacentPosition.add(rotatedPosition);
+
+                            Vector3i originPosition = blockComponent.getPosition();
+                            Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(result.getHitNormal()), relativePosition).add(originPosition);
 
                             EntityRef adjacentEntityRef = blockEntityRegistry.getBlockEntityAt(adjacentPosition);
                             DoDamageEvent adjacentEvent = new DoDamageEvent(event.getAmount(), event.getDamageType(), toolEntity, toolEntity);
@@ -149,6 +155,16 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                 }
             }
         }
+    }
+
+    static HitResult getHitResult(EntityRef instigator, Physics physics) {
+        // Copied from LocalPlayer.activateTargetOrOwnedEntity(...)
+        LocationComponent location = instigator.getComponent(LocationComponent.class);
+        CharacterComponent characterComponent = instigator.getComponent(CharacterComponent.class);
+        Vector3f direction = characterComponent.getLookDirection();
+        Vector3f originPos = location.getWorldPosition();
+        originPos.y += characterComponent.eyeOffset;
+        return physics.rayTrace(originPos, direction, characterComponent.interactionRange, filter);
     }
 
     @ReceiveEvent
@@ -172,5 +188,86 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         consumerComponent.currentStoredPower -= Math.pow(1.15, event.getAmount());
         toolEntity.saveComponent(consumerComponent);
         event.consume();
+    }
+
+    @ReceiveEvent
+    public void onUseBlockPlacementTool(ActivateEvent event, EntityRef tool, ToolBlockPlacementComponent blockPlacementComponent) {
+        if (inputSystem.getKeyboard().isKeyDown(Keyboard.KeyId.LEFT_SHIFT)) {
+            // mark the targeted block as the source
+            BlockComponent blockComponent = event.getTarget().getComponent(BlockComponent.class);
+            if (blockComponent != null) {
+                blockPlacementComponent.sourceBlockFamily = blockComponent.getBlock().getBlockFamily();
+            } else {
+                blockPlacementComponent.sourceBlockFamily = null;
+            }
+            tool.saveComponent(blockPlacementComponent);
+            return;
+        }
+
+        EntityRef instigator = event.getInstigator();
+
+        List<Vector3i> positions = getPotentialBlockPlacementPositions(blockPlacementComponent, instigator, worldProvider, physics);
+        if (positions.size() > 0) {
+            float power = positions.size();
+            BeforePowerToolUsedEvent beforePowerToolUsedEvent = new BeforePowerToolUsedEvent(power);
+            tool.send(beforePowerToolUsedEvent);
+            power = beforePowerToolUsedEvent.getAmount();
+
+            if (!beforePowerToolUsedEvent.isConsumed() && beforePowerToolUsedEvent.isToolPowered() && instigator.hasComponent(CharacterComponent.class)) {
+                EntityRef itemToPlace = getTargetItemForBlockPlacementTool(instigator, blockPlacementComponent);
+                if (itemToPlace.exists()) {
+                    if (inventoryManager.removeItem(instigator, tool, itemToPlace, true, positions.size()) != null) {
+                        Map<Vector3i, Block> placementMap = Maps.newHashMap();
+                        for (Vector3i position : positions) {
+                            Block block = blockPlacementComponent.sourceBlockFamily.getBlockForPlacement(
+                                    worldProvider,
+                                    blockEntityRegistry,
+                                    position,
+                                    Side.inDirection(event.getHitNormal()).reverse(),
+                                    Side.inDirection(event.getDirection())
+                            );
+                            placementMap.put(position, block);
+                        }
+
+                        PlaceBlocks placeBlocks = new PlaceBlocks(placementMap, instigator);
+                        worldProvider.getWorldEntity().send(placeBlocks);
+                        if (!placeBlocks.isConsumed()) {
+                            tool.send(new PowerToolUsedEvent(power));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    static List<Vector3i> getPotentialBlockPlacementPositions(ToolBlockPlacementComponent blockPlacementComponent, EntityRef characterEntity, WorldProvider worldProvider, Physics physics) {
+        List<Vector3i> positions = Lists.newLinkedList();
+
+        HitResult hitResult = getHitResult(characterEntity, physics);
+        if (hitResult.isWorldHit()) {
+            BlockFamily buildOnBlockFamily = worldProvider.getBlock(hitResult.getBlockPosition()).getBlockFamily();
+
+            for (BaseVector2i pos : SpiralIterable.clockwise(Vector2i.zero()).maxRadius(blockPlacementComponent.maximumRange).build()) {
+                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 1)).add(hitResult.getBlockPosition());
+                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 0)).add(hitResult.getBlockPosition());
+                if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID) && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)) {
+                    positions.add(adjacentPositionToHitFace);
+                }
+            }
+        }
+
+        return positions;
+    }
+
+    private EntityRef getTargetItemForBlockPlacementTool(EntityRef instigator, ToolBlockPlacementComponent blockPlacementComponent) {
+        EntityRef targetItem = EntityRef.NULL;
+        for (EntityRef item : ExtendedInventoryManager.iterateItems(inventoryManager, instigator)) {
+            BlockItemComponent blockItemComponent = item.getComponent(BlockItemComponent.class);
+            if (blockItemComponent != null && blockItemComponent.blockFamily.equals(blockPlacementComponent.sourceBlockFamily)) {
+                targetItem = item;
+                break;
+            }
+        }
+        return targetItem;
     }
 }
