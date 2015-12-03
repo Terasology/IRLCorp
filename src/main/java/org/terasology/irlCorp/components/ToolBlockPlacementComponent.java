@@ -23,5 +23,7 @@ public class ToolBlockPlacementComponent implements Component {
     @Replicate
     public int maximumRange = 5;
     @Replicate
+    public int maximumBlocks = 10;
+    @Replicate
     public BlockFamily sourceBlockFamily;
 }

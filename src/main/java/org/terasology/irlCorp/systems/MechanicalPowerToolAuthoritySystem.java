@@ -41,7 +41,9 @@ import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.machines.ExtendedInventoryManager;
 import org.terasology.math.Direction;
+import org.terasology.math.Rotation;
 import org.terasology.math.Side;
+import org.terasology.math.Yaw;
 import org.terasology.math.geom.BaseVector2i;
 import org.terasology.math.geom.SpiralIterable;
 import org.terasology.math.geom.Vector2i;
@@ -176,7 +178,8 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
     @ReceiveEvent
     public void canUsePowerTool(BeforePowerToolUsedEvent event, EntityRef toolEntity, MechanicalPowerConsumerComponent consumerComponent) {
-        if (event.getAmount() > 0 && consumerComponent.currentStoredPower < event.getAmount()) {
+        float scaledAmount = (float) Math.pow(1.15, event.getAmount());
+        if (scaledAmount > 0 && consumerComponent.currentStoredPower < scaledAmount) {
             event.consume();
         } else {
             event.setToolPowered();
@@ -185,7 +188,8 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
     @ReceiveEvent
     public void usePowerTool(PowerToolUsedEvent event, EntityRef toolEntity, MechanicalPowerConsumerComponent consumerComponent) {
-        consumerComponent.currentStoredPower -= Math.pow(1.15, event.getAmount());
+        float scaledAmount = (float) Math.pow(1.15, event.getAmount());
+        consumerComponent.currentStoredPower -= scaledAmount;
         toolEntity.saveComponent(consumerComponent);
         event.consume();
     }
@@ -250,13 +254,85 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             for (BaseVector2i pos : SpiralIterable.clockwise(Vector2i.zero()).maxRadius(blockPlacementComponent.maximumRange).build()) {
                 Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 1)).add(hitResult.getBlockPosition());
                 Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 0)).add(hitResult.getBlockPosition());
-                if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID) && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)) {
+                if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
+                        && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
+                        // yes, this does cheat a bit.  It is likely good enough for simplicity sake. Really this check should be done after we have gathered all possible positions.
+                        && connectsToExistingPosition(adjacentPositionToHitFace, positions)
+                        && positions.size() < blockPlacementComponent.maximumBlocks) {
                     positions.add(adjacentPositionToHitFace);
                 }
             }
+        } else {
+            CharacterComponent characterComponent = characterEntity.getComponent(CharacterComponent.class);
+            Vector3f direction = characterComponent.getLookDirection();
+            Direction horizontalLookDirection = Direction.inDirection(direction.x, 0f, direction.z);
+            if (direction.y < 0f) {
+                // looking downwards, try and extend the ledge they are on
+                LocationComponent location = characterEntity.getComponent(LocationComponent.class);
+                Vector3i blockUnderneath = new Vector3i(location.getWorldPosition(), 0.5f).subY(1);
+                Vector3i previousBlockUnderneath = new Vector3i(blockUnderneath).sub(horizontalLookDirection.getVector3i());
+                if (!worldProvider.getBlock(blockUnderneath).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
+                    for (int x = 0; x < characterComponent.interactionRange; x++) {
+                        blockUnderneath.add(horizontalLookDirection.getVector3i());
+                        previousBlockUnderneath.add(horizontalLookDirection.getVector3i());
+                        if (worldProvider.getBlock(blockUnderneath).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
+                            // we have found some air within reach
+                            positions.add(new Vector3i(blockUnderneath));
+
+                            Rotation leftRotation = Rotation.rotate(Yaw.CLOCKWISE_270);
+                            Vector3i leftVector = leftRotation.rotate(horizontalLookDirection.toSide()).getVector3i();
+                            Vector3i currentPosition = new Vector3i(blockUnderneath);
+                            Vector3i ledgePosition = new Vector3i(previousBlockUnderneath);
+                            for (int left = 1; left < blockPlacementComponent.maximumRange && positions.size() < blockPlacementComponent.maximumBlocks; left++) {
+                                currentPosition.add(leftVector);
+                                ledgePosition.add(leftVector);
+                                if (worldProvider.getBlock(currentPosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
+                                        && !worldProvider.getBlock(ledgePosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
+                                    positions.add(new Vector3i(currentPosition));
+                                } else {
+                                    break;
+                                }
+                            }
+
+                            Rotation rightRotation = Rotation.rotate(Yaw.CLOCKWISE_90);
+                            Vector3i rightVector = rightRotation.rotate(horizontalLookDirection.toSide()).getVector3i();
+                            currentPosition = new Vector3i(blockUnderneath);
+                            ledgePosition = new Vector3i(previousBlockUnderneath);
+                            for (int right = 1; right < blockPlacementComponent.maximumRange && positions.size() < blockPlacementComponent.maximumBlocks; right++) {
+                                currentPosition.add(rightVector);
+                                ledgePosition.add(rightVector);
+                                if (worldProvider.getBlock(currentPosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
+                                        && !worldProvider.getBlock(ledgePosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
+                                    positions.add(new Vector3i(currentPosition));
+                                } else {
+                                    break;
+                                }
+                            }
+
+                            break;
+                        }
+                    }
+                }
+
+            }
+
         }
 
         return positions;
+    }
+
+    static boolean connectsToExistingPosition(Vector3i position, List<Vector3i> existingPositions) {
+        if (existingPositions.size() == 0) {
+            // allow the first position to be valid
+            return true;
+        }
+
+        for (Vector3i existingPosition : existingPositions) {
+            if (position.gridDistance(existingPosition) == 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private EntityRef getTargetItemForBlockPlacementTool(EntityRef instigator, ToolBlockPlacementComponent blockPlacementComponent) {
