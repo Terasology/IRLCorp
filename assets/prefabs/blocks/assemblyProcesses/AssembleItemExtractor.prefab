@@ -1,0 +1,23 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "RequirementInput": {
+        "requirements": ["Mallet"]
+    },
+    "BlockFamilyInput": {
+        "blockCounts": {
+            "IRLCorp:ConveyorBelt": 1
+        }
+    },
+    "ItemPrefabInput": {
+        "itemCounts": {
+            "IRLCorp:MechanicalParts": 1
+        }
+    },
+    "BlockFamilyOutput": {
+        "blockCounts": {
+            "IRLCorp:ItemExtractor": 1
+        }
+    }
+}

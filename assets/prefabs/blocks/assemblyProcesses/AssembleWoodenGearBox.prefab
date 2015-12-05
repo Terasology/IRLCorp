@@ -1,0 +1,16 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "BlockFamilyInput": {
+        "blockCounts": {
+            "ManualLabor:WoodenBox": 1,
+            "IRLCorp:WoodenAxle": 1
+        }
+    },
+    "BlockFamilyOutput": {
+        "blockCounts": {
+            "IRLCorp:WoodenGearBox": 1
+        }
+    }
+}

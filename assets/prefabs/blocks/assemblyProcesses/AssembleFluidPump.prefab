@@ -1,0 +1,23 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "RequirementInput": {
+        "requirements": ["Screwdriver"]
+    },
+    "BlockFamilyInput": {
+        "blockCounts": {
+            "IRLCorp:FluidPipe": 2
+        }
+    },
+    "MaterialItemInput": {
+        "itemCounts": {
+            "IRLCorp:MechanicalParts": 1
+        }
+    },
+    "BlockFamilyOutput": {
+        "blockCounts": {
+            "IRLCorp:FluidPump": 1
+        }
+    }
+}

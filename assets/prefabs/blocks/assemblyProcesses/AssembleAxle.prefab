@@ -1,0 +1,21 @@
+{
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "RequirementInput": {
+        "requirements": ["Pliers"]
+    },
+    "MaterialItemInput": {
+        "itemCounts": {
+            "ManualLabor:Rod": 1,
+            "ManualLabor:Bolt": 2
+        }
+    },
+    "MetalSubstanceRequirement": {
+    },
+    "BlockFamilyOutput": {
+        "blockCounts": {
+            "IRLCorp:Axle": 1
+        }
+    }
+}
