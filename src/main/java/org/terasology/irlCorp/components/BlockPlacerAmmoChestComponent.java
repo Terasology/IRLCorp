@@ -16,11 +16,6 @@
 package org.terasology.irlCorp.components;
 
 import org.terasology.entitySystem.Component;
-import org.terasology.network.Replicate;
 
-public class ToolBlockPlacementComponent implements Component {
-    @Replicate
-    public int maximumRange = 5;
-    @Replicate
-    public int maximumBlocks = 10;
+public class BlockPlacerAmmoChestComponent implements Component {
 }

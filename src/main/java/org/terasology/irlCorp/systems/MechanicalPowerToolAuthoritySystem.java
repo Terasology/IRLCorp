@@ -23,8 +23,7 @@ import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.input.InputSystem;
-import org.terasology.input.Keyboard;
+import org.terasology.irlCorp.components.BlockPlacerAmmoChestComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolDamageAdjacentComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolIncreaseMaxPowerComponent;
@@ -63,6 +62,7 @@ import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.entity.placement.PlaceBlocks;
 import org.terasology.world.block.family.BlockFamily;
 import org.terasology.world.block.items.BlockItemComponent;
+import org.terasology.world.block.items.OnBlockToItem;
 
 import java.util.List;
 import java.util.Map;
@@ -77,8 +77,6 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     InventoryManager inventoryManager;
     @In
     WorldProvider worldProvider;
-    @In
-    InputSystem inputSystem;
 
     private static CollisionGroup[] filter = {StandardCollisionGroup.DEFAULT, StandardCollisionGroup.WORLD};
 
@@ -196,18 +194,6 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
     @ReceiveEvent
     public void onUseBlockPlacementTool(ActivateEvent event, EntityRef tool, ToolBlockPlacementComponent blockPlacementComponent) {
-        if (inputSystem.getKeyboard().isKeyDown(Keyboard.KeyId.LEFT_SHIFT)) {
-            // mark the targeted block as the source
-            BlockComponent blockComponent = event.getTarget().getComponent(BlockComponent.class);
-            if (blockComponent != null) {
-                blockPlacementComponent.sourceBlockFamily = blockComponent.getBlock().getBlockFamily();
-            } else {
-                blockPlacementComponent.sourceBlockFamily = null;
-            }
-            tool.saveComponent(blockPlacementComponent);
-            return;
-        }
-
         EntityRef instigator = event.getInstigator();
 
         List<Vector3i> positions = getPotentialBlockPlacementPositions(blockPlacementComponent, instigator, worldProvider, physics);
@@ -218,12 +204,15 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             power = beforePowerToolUsedEvent.getAmount();
 
             if (!beforePowerToolUsedEvent.isConsumed() && beforePowerToolUsedEvent.isToolPowered() && instigator.hasComponent(CharacterComponent.class)) {
-                EntityRef itemToPlace = getTargetItemForBlockPlacementTool(instigator, blockPlacementComponent);
-                if (itemToPlace.exists()) {
-                    if (inventoryManager.removeItem(instigator, tool, itemToPlace, true, positions.size()) != null) {
+                EntityRef ammoChest = getAmmoChestForBlockPlacementTool(instigator, blockPlacementComponent, positions.size());
+                EntityRef itemToPlace = getItemFromAmmoChest(ammoChest, positions.size());
+
+                if (ammoChest.exists() && itemToPlace.exists()) {
+                    if (inventoryManager.removeItem(ammoChest, tool, itemToPlace, true, positions.size()) != null) {
                         Map<Vector3i, Block> placementMap = Maps.newHashMap();
                         for (Vector3i position : positions) {
-                            Block block = blockPlacementComponent.sourceBlockFamily.getBlockForPlacement(
+                            BlockItemComponent blockItemComponent = itemToPlace.getComponent(BlockItemComponent.class);
+                            Block block = blockItemComponent.blockFamily.getBlockForPlacement(
                                     worldProvider,
                                     blockEntityRegistry,
                                     position,
@@ -239,6 +228,8 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                             tool.send(new PowerToolUsedEvent(power));
                         }
                     }
+
+                    event.consume();
                 }
             }
         }
@@ -335,15 +326,34 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         return false;
     }
 
-    private EntityRef getTargetItemForBlockPlacementTool(EntityRef instigator, ToolBlockPlacementComponent blockPlacementComponent) {
+    private EntityRef getItemFromAmmoChest(EntityRef ammoChest, int itemsNeeded) {
         EntityRef targetItem = EntityRef.NULL;
-        for (EntityRef item : ExtendedInventoryManager.iterateItems(inventoryManager, instigator)) {
+        for (EntityRef item : ExtendedInventoryManager.iterateItems(inventoryManager, ammoChest)) {
             BlockItemComponent blockItemComponent = item.getComponent(BlockItemComponent.class);
-            if (blockItemComponent != null && blockItemComponent.blockFamily.equals(blockPlacementComponent.sourceBlockFamily)) {
+            if (blockItemComponent != null && inventoryManager.getStackSize(item) >= itemsNeeded) {
                 targetItem = item;
                 break;
             }
         }
         return targetItem;
+    }
+
+    private EntityRef getAmmoChestForBlockPlacementTool(EntityRef instigator, ToolBlockPlacementComponent blockPlacementComponent, int itemsNeeded) {
+        EntityRef targetItem = EntityRef.NULL;
+        for (EntityRef item : ExtendedInventoryManager.iterateItems(inventoryManager, instigator)) {
+            BlockPlacerAmmoChestComponent blockPlacerAmmoChestComponent = item.getComponent(BlockPlacerAmmoChestComponent.class);
+            if (blockPlacerAmmoChestComponent != null) {
+                if (getItemFromAmmoChest(item, itemsNeeded).exists()) {
+                    targetItem = item;
+                    break;
+                }
+            }
+        }
+        return targetItem;
+    }
+
+    @ReceiveEvent
+    public void retainBlockPlacerAmmoChestToItem(OnBlockToItem event, EntityRef entityRef, BlockPlacerAmmoChestComponent blockPlacerAmmoChestComponent) {
+        event.getItem().addComponent(blockPlacerAmmoChestComponent);
     }
 }

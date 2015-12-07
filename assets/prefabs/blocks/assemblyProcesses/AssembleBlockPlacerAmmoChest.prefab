@@ -1,0 +1,25 @@
+{
+  "ProcessDefinition": {
+    "processType": "ManualLabor:Assembling"
+  },
+  "RequirementInput": {
+    "requirements": [
+      "Mallet"
+    ]
+  },
+  "BlockFamilyInput": {
+    "blockCounts": {
+      "ManualLabor:MetalBox": 1
+    }
+  },
+  "MaterialItemInput": {
+    "itemCounts": {
+      "IRLCorp:ToolExtension": 1
+    }
+  },
+  "BlockFamilyOutput": {
+    "blockCounts": {
+      "IRLCorp:BlockPlacerAmmoChest": 1
+    }
+  }
+}

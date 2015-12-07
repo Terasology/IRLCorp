@@ -94,10 +94,8 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
 
     @ReceiveEvent
     public void getItemTooltipBlockPlacement(GetItemTooltip event, EntityRef entityRef, ToolBlockPlacementComponent blockPlacementComponent) {
-        String blockName = blockPlacementComponent.sourceBlockFamily == null ? "air" : blockPlacementComponent.sourceBlockFamily.getDisplayName();
-        event.getTooltipLines().add(new TooltipLine("Places " + blockName + " blocks"));
+        event.getTooltipLines().add(new TooltipLine("Places blocks from a block placer ammo chest"));
     }
-
 
     @Override
     public void renderOpaque() {
