@@ -14,7 +14,7 @@
   },
   "EntityNetwork": {},
   "FluidTransportBlockNetwork": {
-    "isLeaf": false
+    "isLeaf": true
   },
   "MechanicalPowerBlockNetwork": {
     "isLeaf": false
