@@ -26,8 +26,8 @@ import org.terasology.entitySystem.systems.RenderSystem;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.ToolBlockPlacementComponent;
 import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
-import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.inventory.InventoryManager;
+import org.terasology.logic.inventory.SelectedInventorySlotComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.math.geom.Rect2i;
 import org.terasology.math.geom.Vector2i;
@@ -109,8 +109,9 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
 
     @Override
     public void renderOverlay() {
-        CharacterComponent characterComponent = localPlayer.getCharacterEntity().getComponent(CharacterComponent.class);
-        EntityRef selectedItem = inventoryManager.getItemInSlot(localPlayer.getCharacterEntity(), characterComponent.selectedItem);
+        // TODO: Null checks?
+        SelectedInventorySlotComponent selectedInventorySlotComponent = localPlayer.getCharacterEntity().getComponent(SelectedInventorySlotComponent.class);
+        EntityRef selectedItem = inventoryManager.getItemInSlot(localPlayer.getCharacterEntity(), selectedInventorySlotComponent.slot);
         ToolBlockPlacementComponent blockPlacementComponent = selectedItem.getComponent(ToolBlockPlacementComponent.class);
         if (blockPlacementComponent != null) {
             if (blockSelectionRenderer == null) {
