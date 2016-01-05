@@ -109,22 +109,23 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
 
     @Override
     public void renderOverlay() {
-        // TODO: Null checks?
         SelectedInventorySlotComponent selectedInventorySlotComponent = localPlayer.getCharacterEntity().getComponent(SelectedInventorySlotComponent.class);
-        EntityRef selectedItem = inventoryManager.getItemInSlot(localPlayer.getCharacterEntity(), selectedInventorySlotComponent.slot);
-        ToolBlockPlacementComponent blockPlacementComponent = selectedItem.getComponent(ToolBlockPlacementComponent.class);
-        if (blockPlacementComponent != null) {
-            if (blockSelectionRenderer == null) {
-                Texture texture = Assets.getTexture("engine:selection").get();
-                blockSelectionRenderer = new BlockSelectionRenderer(texture);
-            }
-            blockSelectionRenderer.beginRenderOverlay();
+        if (selectedInventorySlotComponent != null) {
+            EntityRef selectedItem = inventoryManager.getItemInSlot(localPlayer.getCharacterEntity(), selectedInventorySlotComponent.slot);
+            ToolBlockPlacementComponent blockPlacementComponent = selectedItem.getComponent(ToolBlockPlacementComponent.class);
+            if (blockPlacementComponent != null) {
+                if (blockSelectionRenderer == null) {
+                    Texture texture = Assets.getTexture("engine:selection").get();
+                    blockSelectionRenderer = new BlockSelectionRenderer(texture);
+                }
+                blockSelectionRenderer.beginRenderOverlay();
 
-            for (Vector3i position : MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics)) {
-                blockSelectionRenderer.renderMark(position);
-            }
+                for (Vector3i position : MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics)) {
+                    blockSelectionRenderer.renderMark(position);
+                }
 
-            blockSelectionRenderer.endRenderOverlay();
+                blockSelectionRenderer.endRenderOverlay();
+            }
         }
 
     }
