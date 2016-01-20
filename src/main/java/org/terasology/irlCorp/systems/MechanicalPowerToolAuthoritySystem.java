@@ -33,6 +33,7 @@ import org.terasology.irlCorp.events.BeforePowerToolUsedEvent;
 import org.terasology.irlCorp.events.MechanicalPowerToolPartAddedEvent;
 import org.terasology.irlCorp.events.PowerToolUsedEvent;
 import org.terasology.logic.characters.CharacterComponent;
+import org.terasology.logic.characters.GazeAuthoritySystem;
 import org.terasology.logic.common.ActivateEvent;
 import org.terasology.logic.health.DoDamageEvent;
 import org.terasology.logic.inventory.InventoryManager;
@@ -158,12 +159,11 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     }
 
     static HitResult getHitResult(EntityRef instigator, Physics physics) {
-        // Copied from LocalPlayer.activateTargetOrOwnedEntity(...)
-        LocationComponent location = instigator.getComponent(LocationComponent.class);
         CharacterComponent characterComponent = instigator.getComponent(CharacterComponent.class);
-        Vector3f direction = characterComponent.getLookDirection();
+        EntityRef eyeEntity = GazeAuthoritySystem.getGazeEntityForCharacter(instigator);
+        LocationComponent location = eyeEntity.getComponent(LocationComponent.class);
+        Vector3f direction = location.getWorldDirection();
         Vector3f originPos = location.getWorldPosition();
-        originPos.y += characterComponent.eyeOffset;
         return physics.rayTrace(originPos, direction, characterComponent.interactionRange, filter);
     }
 
@@ -255,12 +255,13 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             }
         } else {
             CharacterComponent characterComponent = characterEntity.getComponent(CharacterComponent.class);
-            Vector3f direction = characterComponent.getLookDirection();
+            LocationComponent locationComponent = GazeAuthoritySystem.getGazeEntityForCharacter(characterEntity).getComponent(LocationComponent.class);
+            Vector3f direction = locationComponent.getWorldDirection();
             Direction horizontalLookDirection = Direction.inDirection(direction.x, 0f, direction.z);
             if (direction.y < 0f) {
                 // looking downwards, try and extend the ledge they are on
-                LocationComponent location = characterEntity.getComponent(LocationComponent.class);
-                Vector3i blockUnderneath = new Vector3i(location.getWorldPosition(), 0.5f).subY(1);
+                LocationComponent characterLocationComponent = characterEntity.getComponent(LocationComponent.class);
+                Vector3i blockUnderneath = new Vector3i(characterLocationComponent.getWorldPosition(), 0.5f).subY(1);
                 Vector3i previousBlockUnderneath = new Vector3i(blockUnderneath).sub(horizontalLookDirection.getVector3i());
                 if (!worldProvider.getBlock(blockUnderneath).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
                     for (int x = 0; x < characterComponent.interactionRange; x++) {
