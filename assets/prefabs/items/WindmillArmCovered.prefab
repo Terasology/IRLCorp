@@ -2,8 +2,7 @@
   "parent": "engine:iconItem",
   "Item": {
     "icon": "IRLCorp:IRLCorp#WrappedWing",
-    "stackId": "IRLCorp.WindmillArmCovered",
-    "renderWithIcon": true
+    "stackId": "IRLCorp.WindmillArmCovered"
   },
   "DisplayName": {
     "name": "Windmill Covered Arm"

@@ -3,9 +3,7 @@
   "DisplayName": {
     "name": "Block Placer"
   },
-  "Item": {
-    "renderWithIcon": true
-  },
+  "Item": {},
   "MaterialItem": {
     "icon": "IRLCorp:IRLCorp#BlockPlacer"
   },

@@ -2,8 +2,7 @@
   "parent": "engine:iconItem",
   "Item": {
     "icon": "IRLCorp:IRLCorp#ToolExtension",
-    "stackId": "IRLCorp:ToolExtension",
-    "renderWithIcon": true
+    "stackId": "IRLCorp:ToolExtension"
   },
   "DisplayName": {
     "name": "Tool Extension"

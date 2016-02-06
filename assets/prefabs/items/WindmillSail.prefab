@@ -2,8 +2,7 @@
   "parent": "engine:iconItem",
   "Item": {
     "icon": "IRLCorp:IRLCorp#WindmillCross",
-    "stackId": "IRLCorp.WindmillSail",
-    "renderWithIcon": true
+    "stackId": "IRLCorp.WindmillSail"
   },
   "DisplayName": {
     "name": "Windmill Sail"

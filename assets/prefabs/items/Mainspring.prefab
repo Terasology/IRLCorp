@@ -2,8 +2,7 @@
   "parent": "engine:iconItem",
   "Item": {
     "icon": "IRLCorp:IRLCorp#Mainspring",
-    "stackId": "IRLCorp:Mainspring",
-    "renderWithIcon": true
+    "stackId": "IRLCorp:Mainspring"
   },
   "DisplayName": {
     "name": "Mainspring"
