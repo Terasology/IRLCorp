@@ -2,7 +2,7 @@
   "ProcessDefinition": {
     "processType": "IRLCorp:Engine"
   },
-  "MaterialItemInput": {
+  "InventoryInput": {
     "itemCounts": {
       "SubstanceMatters:MaterialItem#ManualLabor:Chunks|SubstanceMatters:Coal": 1
     }

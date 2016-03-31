@@ -1,14 +1,15 @@
 {
+    "Parent": "AssemblingBaseProcessPart",
     "ProcessDefinition": {
         "processType": "ManualLabor:Assembling"
     },
-    "ItemPrefabInput": {
+    "InventoryInput": {
         "itemCounts": {
             "ManualLabor:Stick": 8,
             "ManualLabor:Plank": 1
         }
     },
-    "ItemPrefabOutput": {
+    "InventoryOutput": {
         "itemCounts": {
             "IRLCorp:WindmillArm": 1
         }

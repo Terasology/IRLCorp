@@ -1,4 +1,5 @@
 {
+  "Parent": "ToolAssemblingBaseProcessPart",
   "ProcessDefinition": {
     "processType": "ManualLabor:ToolAssembling"
   },
@@ -8,14 +9,16 @@
       "Pliers"
     ]
   },
-  "MaterialItemInput": {
+  "InventoryInput": {
     "itemCounts": {
       "ManualLabor:Rod": 2,
       "ManualLabor:Plate": 2
     }
   },
-  "MaterialItemOutput": {
-    "item": "IRLCorp:ToolExtension",
-    "amount": 1
+  "TransferSubstances": {},
+  "InventoryOutput": {
+    "itemCounts": {
+      "IRLCorp:ToolExtension": 1
+    }
   }
 }

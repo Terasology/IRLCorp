@@ -1,11 +1,12 @@
 {
+  "Parent": "AssemblingBaseProcessPart",
   "ProcessDefinition": {
     "processType": "ManualLabor:Assembling"
   },
   "RequirementInput": {
     "requirements": ["Pliers"]
   },
-  "MaterialItemInput": {
+  "InventoryInput": {
     "itemCounts": {
       "ManualLabor:Sheet": 1,
       "ManualLabor:Bolt" : 2
@@ -13,7 +14,7 @@
   },
   "MetalSubstanceRequirement": {
   },
-  "BlockFamilyOutput": {
+  "InventoryOutput": {
     "blockCounts": {
       "IRLCorp:FluidPipe": 1
     }

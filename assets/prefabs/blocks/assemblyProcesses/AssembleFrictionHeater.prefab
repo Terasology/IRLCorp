@@ -1,17 +1,18 @@
 {
+  "Parent": "AssemblingBaseProcessPart",
   "ProcessDefinition": {
     "processType": "ManualLabor:Assembling"
   },
   "RequirementInput": {
     "requirements": ["Wrench"]
   },
-  "BlockFamilyInput": {
+  "InventoryInput": {
     "blockCounts": {
       "IRLCorp:GearBox": 1,
       "IRLCorp:HeatDuct": 1
     }
   },
-  "BlockFamilyOutput": {
+  "InventoryOutput": {
     "blockCounts": {
       "IRLCorp:FrictionHeater": 1
     }

@@ -1,17 +1,18 @@
 {
+    "Parent": "AssemblingBaseProcessPart",
     "ProcessDefinition": {
         "processType": "ManualLabor:Assembling"
     },
     "RequirementInput": {
         "requirements": ["Mallet"]
     },
-    "ItemPrefabInput": {
+    "InventoryInput": {
         "itemCounts": {
             "ManualLabor:Plank": 1,
             "ManualLabor:Pegs": 2
         }
     },
-    "BlockFamilyOutput": {
+    "InventoryOutput": {
         "blockCounts": {
             "IRLCorp:WoodenAxle": 1
         }

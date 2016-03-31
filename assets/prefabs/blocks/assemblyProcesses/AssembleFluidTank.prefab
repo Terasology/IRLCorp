@@ -1,17 +1,18 @@
 {
+  "Parent": "AssemblingBaseProcessPart",
   "ProcessDefinition": {
     "processType": "ManualLabor:Assembling"
   },
   "RequirementInput": {
     "requirements": ["Saw"]
   },
-  "BlockFamilyInput": {
+  "InventoryInput": {
     "blockCounts": {
       "IRLCorp:FluidPipe": 1,
       "ManualLabor:DirtyGlass": 8
     }
   },
-  "BlockFamilyOutput": {
+  "InventoryOutput": {
     "blockCounts": {
       "IRLCorp:FluidTank": 1
     }

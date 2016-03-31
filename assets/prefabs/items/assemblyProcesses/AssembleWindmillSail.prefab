@@ -1,13 +1,14 @@
 {
+    "Parent": "AssemblingBaseProcessPart",
     "ProcessDefinition": {
         "processType": "ManualLabor:Assembling"
     },
-    "ItemPrefabInput": {
+    "InventoryInput": {
         "itemCounts": {
             "IRLCorp:WindmillArmCovered": 4
         }
     },
-    "ItemPrefabOutput": {
+    "InventoryOutput": {
         "itemCounts": {
             "IRLCorp:WindmillSail": 1
         }

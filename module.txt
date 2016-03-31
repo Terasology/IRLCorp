@@ -1,13 +1,13 @@
 {
     "id" : "IRLCorp",
-    "version" : "0.2.3-SNAPSHOT",
+    "version" : "1.0.0-SNAPSHOT",
     "author" : "Josharias",
     "displayName" : "IRL Corp",
     "description" : "IRL Corp - for the industrialized reduction of labor",
     "dependencies" :
     [
-        {"id": "ManualLabor", "minVersion": "0.1.0"},
-        {"id": "Machines", "minVersion": "0.1.0"},
+        {"id": "ManualLabor", "minVersion": "1.0.0"},
+        {"id": "Machines", "minVersion": "1.0.0"},
         {"id": "StructuralResources", "minVersion": "0.2.0"},
         {"id": "InGameHelp", "minVersion": "0.1.0"},
         {"id": "Durability", "minVersion": "0.1.0"},

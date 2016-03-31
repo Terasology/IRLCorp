@@ -1,4 +1,5 @@
 {
+  "Parent": "AssemblingBaseProcessPart",
   "ProcessDefinition": {
     "processType": "ManualLabor:Assembling"
   },
@@ -7,17 +8,17 @@
       "Mallet"
     ]
   },
-  "BlockFamilyInput": {
+  "InventoryInput": {
     "blockCounts": {
       "ManualLabor:MetalBox": 1
     }
   },
-  "MaterialItemInput": {
+  "InventoryInput": {
     "itemCounts": {
       "IRLCorp:ToolExtension": 1
     }
   },
-  "BlockFamilyOutput": {
+  "InventoryOutput": {
     "blockCounts": {
       "IRLCorp:BlockPlacerAmmoChest": 1
     }

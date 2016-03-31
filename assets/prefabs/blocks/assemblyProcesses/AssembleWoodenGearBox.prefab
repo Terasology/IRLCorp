@@ -1,14 +1,15 @@
 {
+    "Parent": "AssemblingBaseProcessPart",
     "ProcessDefinition": {
         "processType": "ManualLabor:Assembling"
     },
-    "BlockFamilyInput": {
+    "InventoryInput": {
         "blockCounts": {
             "ManualLabor:WoodenBox": 1,
             "IRLCorp:WoodenAxle": 1
         }
     },
-    "BlockFamilyOutput": {
+    "InventoryOutput": {
         "blockCounts": {
             "IRLCorp:WoodenGearBox": 1
         }

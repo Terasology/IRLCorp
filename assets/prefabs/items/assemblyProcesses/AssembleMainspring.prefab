@@ -1,18 +1,21 @@
 {
+  "Parent": "AssemblingBaseProcessPart",
   "ProcessDefinition": {
     "processType": "ManualLabor:ToolAssembling"
   },
   "RequirementInput": {
     "requirements": ["Pliers"]
   },
-  "MaterialItemInput": {
+  "InventoryInput": {
     "itemCounts": {
       "IRLCorp:MechanicalParts": 1,
       "ManualLabor:Plate": 2
     }
   },
-  "MaterialItemOutput": {
-    "item": "IRLCorp:Mainspring",
-    "amount": 1
+  "TransferSubstances": {},
+  "InventoryOutput": {
+    "itemCounts": {
+      "IRLCorp:Mainspring": 1
+    }
   }
 }

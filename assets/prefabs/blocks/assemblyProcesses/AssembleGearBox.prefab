@@ -1,17 +1,18 @@
 {
+    "Parent": "AssemblingBaseProcessPart",
     "ProcessDefinition": {
         "processType": "ManualLabor:Assembling"
     },
     "RequirementInput": {
         "requirements": ["Screwdriver"]
     },
-    "BlockFamilyInput": {
+    "InventoryInput": {
         "blockCounts": {
             "ManualLabor:MetalBox": 1,
             "IRLCorp:Axle": 1
         }
     },
-    "BlockFamilyOutput": {
+    "InventoryOutput": {
         "blockCounts": {
             "IRLCorp:GearBox": 1
         }
