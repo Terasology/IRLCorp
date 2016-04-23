@@ -1,0 +1,7 @@
+{
+  "Parent": "ToolAssemblingBaseProcessPart",
+  "EventualSkillRequirement": {
+    "skillUrn": "ManualLaborEventualSkills:CraftingSkill",
+    "level": 2
+  }
+}

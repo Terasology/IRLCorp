@@ -1,5 +1,5 @@
 {
-    "Parent": "AssemblingBaseProcessPart",
+    "Parent": "AdvancedAssemblingBaseProcessPart",
     "ProcessDefinition": {
         "processType": "ManualLabor:Assembling"
     },
