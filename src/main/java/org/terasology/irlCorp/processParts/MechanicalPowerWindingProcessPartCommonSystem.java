@@ -22,7 +22,7 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.irlCorp.components.MechanicalPowerWinderComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.machines.ExtendedInventoryManager;
-import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
+import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
 import org.terasology.registry.In;
 import org.terasology.workstation.component.SpecificInputSlotComponent;
 import org.terasology.workstation.process.WorkstationInventoryUtils;
@@ -48,15 +48,15 @@ public class MechanicalPowerWindingProcessPartCommonSystem extends BaseComponent
             return;
         }
 
-        MechanicalPowerConsumerComponent consumerComponent = event.getWorkstation().getComponent(MechanicalPowerConsumerComponent.class);
+        PotentialEnergyDeviceComponent consumerComponent = event.getWorkstation().getComponent(PotentialEnergyDeviceComponent.class);
         if (consumerComponent == null
-                || consumerComponent.currentStoredPower < winderComponent.maxTransferAmount) {
+                || consumerComponent.currentStoredEnergy < winderComponent.maxTransferAmount) {
             event.consume();
             return;
         }
 
         for (EntityRef entityRef : ExtendedInventoryManager.iterateItems(inventoryManager, event.getWorkstation(), false, InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY)) {
-            MechanicalPowerConsumerComponent mechanicalPowerConsumerComponent = entityRef.getComponent(MechanicalPowerConsumerComponent.class);
+            PotentialEnergyDeviceComponent mechanicalPowerConsumerComponent = entityRef.getComponent(PotentialEnergyDeviceComponent.class);
             if (mechanicalPowerConsumerComponent != null) {
                 processEntity.addComponent(new SpecificInputSlotComponent(inventoryManager.findSlotWithItem(event.getWorkstation(), entityRef)));
                 return;
@@ -73,22 +73,22 @@ public class MechanicalPowerWindingProcessPartCommonSystem extends BaseComponent
         EntityRef instigator = event.getInstigator();
 
         MechanicalPowerWinderComponent winderComponent = workstation.getComponent(MechanicalPowerWinderComponent.class);
-        MechanicalPowerConsumerComponent consumerComponent = workstation.getComponent(MechanicalPowerConsumerComponent.class);
+        PotentialEnergyDeviceComponent consumerComponent = workstation.getComponent(PotentialEnergyDeviceComponent.class);
         SpecificInputSlotComponent specificInputSlotComponent = processEntity.getComponent(SpecificInputSlotComponent.class);
         EntityRef item = inventoryManager.getItemInSlot(workstation, specificInputSlotComponent.slot);
-        MechanicalPowerConsumerComponent itemConsumerComponent = item.getComponent(MechanicalPowerConsumerComponent.class);
+        PotentialEnergyDeviceComponent itemConsumerComponent = item.getComponent(PotentialEnergyDeviceComponent.class);
         if (winderComponent != null && consumerComponent != null && itemConsumerComponent != null) {
-            float spaceAvailableInItem = itemConsumerComponent.maximumStoredPower - itemConsumerComponent.currentStoredPower;
-            float amountToTransfer = Math.min(Math.min(winderComponent.maxTransferAmount, spaceAvailableInItem), consumerComponent.currentStoredPower);
+            float spaceAvailableInItem = itemConsumerComponent.maximumStoredEnergy - itemConsumerComponent.currentStoredEnergy;
+            float amountToTransfer = Math.min(Math.min(winderComponent.maxTransferAmount, spaceAvailableInItem), consumerComponent.currentStoredEnergy);
 
-            itemConsumerComponent.currentStoredPower += amountToTransfer;
+            itemConsumerComponent.currentStoredEnergy += amountToTransfer;
             item.saveComponent(itemConsumerComponent);
 
-            consumerComponent.currentStoredPower -= amountToTransfer;
+            consumerComponent.currentStoredEnergy -= amountToTransfer;
             workstation.saveComponent(consumerComponent);
         }
 
-        if (itemConsumerComponent.currentStoredPower == itemConsumerComponent.maximumStoredPower) {
+        if (itemConsumerComponent.currentStoredEnergy == itemConsumerComponent.maximumStoredEnergy) {
             // this item is full,  put into the output
             inventoryManager.moveItemToSlots(
                     instigator,

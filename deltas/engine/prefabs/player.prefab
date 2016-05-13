@@ -1,8 +1,8 @@
 {
-  "MechanicalPowerConsumer": {
-    "maximumStoredPower": 50
+  "PotentialEnergyDevice": {
+    "maximumStoredEnergy": 50
   },
-  "MechanicalPowerRegen": {
-    "power": 50
+  "PotentialEnergyRegen": {
+    "energyPerSecond": 50
   }
 }

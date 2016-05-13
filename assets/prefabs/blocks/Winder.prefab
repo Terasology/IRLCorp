@@ -15,8 +15,8 @@
     "actionTitle": "Wind",
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
-  "MechanicalPowerConsumer": {
-    "maximumStoredPower": 200
+  "PotentialEnergyDevice": {
+    "maximumStoredEnergy": 200
   },
   "MechanicalPowerWinder": {
     "recoveryTime": 1000,

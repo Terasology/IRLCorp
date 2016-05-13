@@ -15,7 +15,6 @@
  */
 package org.terasology.irlCorp.systems;
 
-import org.terasology.utilities.Assets;
 import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -32,8 +31,8 @@ import org.terasology.logic.players.LocalPlayer;
 import org.terasology.math.geom.Rect2i;
 import org.terasology.math.geom.Vector2i;
 import org.terasology.math.geom.Vector3i;
-import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
 import org.terasology.physics.Physics;
+import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
 import org.terasology.registry.In;
 import org.terasology.rendering.assets.texture.Texture;
 import org.terasology.rendering.assets.texture.TextureUtil;
@@ -43,6 +42,7 @@ import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.layers.ingame.inventory.InventoryCellRendered;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.rendering.world.selection.BlockSelectionRenderer;
+import org.terasology.utilities.Assets;
 import org.terasology.world.WorldProvider;
 
 @RegisterSystem(RegisterMode.CLIENT)
@@ -61,7 +61,7 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
     @ReceiveEvent
     public void drawPowerToolPowerBar(InventoryCellRendered event, EntityRef entity,
                                       MechanicalPowerToolComponent powerToolComponent,
-                                      MechanicalPowerConsumerComponent powerConsumerComponent) {
+                                      PotentialEnergyDeviceComponent powerConsumerComponent) {
         Canvas canvas = event.getCanvas();
 
         Vector2i size = canvas.size();
@@ -72,7 +72,7 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
         int minY = (int) (size.y * 0.7f);
         int maxY = (int) (size.y * 0.8f);
 
-        float percentage = 1f * powerConsumerComponent.currentStoredPower / powerConsumerComponent.maximumStoredPower;
+        float percentage = 1f * powerConsumerComponent.currentStoredEnergy / powerConsumerComponent.maximumStoredEnergy;
 
         ResourceUrn backgroundTexture = TextureUtil.getTextureUriForColor(Color.WHITE);
 

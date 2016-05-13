@@ -12,8 +12,8 @@
     "actionTitle": "Heat",
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
-  "MechanicalPowerConsumer": {
-    "maximumStoredPower": 50
+  "PotentialEnergyDevice": {
+    "maximumStoredEnergy": 50
   },
   "EntityNetwork": {},
   "MechanicalPowerBlockNetwork": {

@@ -49,11 +49,11 @@ import org.terasology.math.geom.SpiralIterable;
 import org.terasology.math.geom.Vector2i;
 import org.terasology.math.geom.Vector3f;
 import org.terasology.math.geom.Vector3i;
-import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
 import org.terasology.physics.CollisionGroup;
 import org.terasology.physics.HitResult;
 import org.terasology.physics.Physics;
 import org.terasology.physics.StandardCollisionGroup;
+import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
 import org.terasology.registry.In;
 import org.terasology.world.BlockEntityRegistry;
 import org.terasology.world.WorldProvider;
@@ -84,14 +84,14 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     @ReceiveEvent
     public void addIncreaseMaxPower(MechanicalPowerToolPartAddedEvent event, EntityRef item, MechanicalPowerToolIncreaseMaxPowerComponent details) {
         EntityRef toolEntity = event.getToolEntity();
-        MechanicalPowerConsumerComponent consumerComponent = toolEntity.getComponent(MechanicalPowerConsumerComponent.class);
+        PotentialEnergyDeviceComponent consumerComponent = toolEntity.getComponent(PotentialEnergyDeviceComponent.class);
         ItemComponent itemComponent = item.getComponent(ItemComponent.class);
         if (consumerComponent == null) {
-            consumerComponent = new MechanicalPowerConsumerComponent();
-            consumerComponent.maximumStoredPower = details.amount * itemComponent.stackCount;
+            consumerComponent = new PotentialEnergyDeviceComponent();
+            consumerComponent.maximumStoredEnergy = details.amount * itemComponent.stackCount;
             toolEntity.addComponent(consumerComponent);
         } else {
-            consumerComponent.maximumStoredPower += details.amount * itemComponent.stackCount;
+            consumerComponent.maximumStoredEnergy += details.amount * itemComponent.stackCount;
             toolEntity.saveComponent(consumerComponent);
         }
         event.setSuccess(true);
@@ -175,9 +175,9 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     }
 
     @ReceiveEvent
-    public void canUsePowerTool(BeforePowerToolUsedEvent event, EntityRef toolEntity, MechanicalPowerConsumerComponent consumerComponent) {
+    public void canUsePowerTool(BeforePowerToolUsedEvent event, EntityRef toolEntity, PotentialEnergyDeviceComponent consumerComponent) {
         float scaledAmount = (float) Math.pow(1.15, event.getAmount());
-        if (scaledAmount > 0 && consumerComponent.currentStoredPower < scaledAmount) {
+        if (scaledAmount > 0 && consumerComponent.currentStoredEnergy < scaledAmount) {
             event.consume();
         } else {
             event.setToolPowered();
@@ -185,9 +185,9 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     }
 
     @ReceiveEvent
-    public void usePowerTool(PowerToolUsedEvent event, EntityRef toolEntity, MechanicalPowerConsumerComponent consumerComponent) {
+    public void usePowerTool(PowerToolUsedEvent event, EntityRef toolEntity, PotentialEnergyDeviceComponent consumerComponent) {
         float scaledAmount = (float) Math.pow(1.15, event.getAmount());
-        consumerComponent.currentStoredPower -= scaledAmount;
+        consumerComponent.currentStoredEnergy -= scaledAmount;
         toolEntity.saveComponent(consumerComponent);
         event.consume();
     }

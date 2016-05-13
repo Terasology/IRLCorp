@@ -18,8 +18,8 @@
   "ProcessRequirementsProviderFromWorkstation": {
     "requirements": ["SledgeHammer"]
   },
-  "MechanicalPowerConsumer": {
-    "maximumStoredPower": 200
+  "PotentialEnergyDevice": {
+    "maximumStoredEnergy": 200
   },
   "EntityNetwork": {},
   "MechanicalPowerBlockNetwork": {

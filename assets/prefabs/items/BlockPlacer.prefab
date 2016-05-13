@@ -13,8 +13,8 @@
       }
     }
   },
-  "MechanicalPowerConsumer": {
-    "maximumStoredPower": 100
+  "PotentialEnergyDevice": {
+    "maximumStoredEnergy": 100
   },
   "ToolBlockPlacement": {},
   "MechanicalPowerTool": {},

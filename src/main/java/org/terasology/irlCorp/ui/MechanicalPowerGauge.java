@@ -18,7 +18,7 @@ package org.terasology.irlCorp.ui;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.machines.ui.VerticalProgressBar;
 import org.terasology.math.geom.Vector2i;
-import org.terasology.mechanicalPower.components.MechanicalPowerConsumerComponent;
+import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
 import org.terasology.rendering.nui.Canvas;
 import org.terasology.rendering.nui.CoreWidget;
 import org.terasology.rendering.nui.LayoutConfig;
@@ -47,13 +47,13 @@ public class MechanicalPowerGauge extends CoreWidget implements WorkstationUI {
 
         if (content instanceof VerticalProgressBar && station.exists()) {
             VerticalProgressBar powerMeter = (VerticalProgressBar) content;
-            MechanicalPowerConsumerComponent consumer = station.getComponent(MechanicalPowerConsumerComponent.class);
+            PotentialEnergyDeviceComponent consumer = station.getComponent(PotentialEnergyDeviceComponent.class);
             if (consumer != null) {
-                float value = consumer.currentStoredPower / consumer.maximumStoredPower;
+                float value = consumer.currentStoredEnergy / consumer.maximumStoredEnergy;
                 powerMeter.setValue(value);
 
                 setTooltipDelay(0);
-                setTooltip(String.format("Power: %.0f/%.0f", consumer.currentStoredPower, consumer.maximumStoredPower));
+                setTooltip(String.format("Power: %.0f/%.0f", consumer.currentStoredEnergy, consumer.maximumStoredEnergy));
             }
         }
     }
