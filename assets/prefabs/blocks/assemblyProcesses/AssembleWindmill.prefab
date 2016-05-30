@@ -6,9 +6,7 @@
     "InventoryInput": {
         "itemCounts": {
             "IRLCorp:WoodenMechanicalParts": 1
-        }
-    },
-    "InventoryInput": {
+        },
         "blockCounts": {
             "IRLCorp:WoodenGearBox": 1
         }

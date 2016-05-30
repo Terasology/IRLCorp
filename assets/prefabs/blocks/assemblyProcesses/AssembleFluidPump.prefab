@@ -9,9 +9,7 @@
     "InventoryInput": {
         "blockCounts": {
             "IRLCorp:FluidPipe": 2
-        }
-    },
-    "InventoryInput": {
+        },
         "itemCounts": {
             "IRLCorp:MechanicalParts": 1
         }

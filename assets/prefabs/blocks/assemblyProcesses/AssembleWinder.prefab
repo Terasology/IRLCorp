@@ -5,20 +5,20 @@
   },
   "RequirementInput": {
     "requirements": [
-      "Mallet"
+      "Screwdriver"
     ]
   },
   "InventoryInput": {
     "blockCounts": {
-      "ManualLabor:MetalBox": 1
+      "IRLCorp:GearBox": 1
     },
     "itemCounts": {
-      "IRLCorp:ToolExtension": 1
+      "IRLCorp:Mainspring": 1
     }
   },
   "InventoryOutput": {
     "blockCounts": {
-      "IRLCorp:BlockPlacerAmmoChest": 1
+      "IRLCorp:Winder": 1
     }
   }
 }

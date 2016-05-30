@@ -4,8 +4,11 @@
   },
   "InventoryInput": {
     "itemCounts": {
-      "SubstanceMatters:MaterialItem#ManualLabor:Chunks|SubstanceMatters:Coal": 1
+      "ManualLabor:Chunks": 1
     }
+  },
+  "BurnableSubstanceRequirement": {
+    // this adds the burn time
   },
   "ActivateEngineOutput": {
     "activateTime": 60000

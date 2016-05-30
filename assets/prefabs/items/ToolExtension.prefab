@@ -14,7 +14,7 @@
   "MechanicalPowerToolDamageAdjacent": {},
   "ItemHelp": {
     "paragraphText": [
-      "The tool extension allows a powered tool to also damage a block directly below the targeted block at the cost of power."
+      "The tool extension allows a powered tool to also damage a block adjacent the targeted block at the cost of power. Adding more than one tool extension will add more adjacent blocks affected."
     ]
   }
 }

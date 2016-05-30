@@ -9,9 +9,7 @@
     "InventoryInput": {
         "blockCounts": {
             "IRLCorp:ConveyorBelt": 1
-        }
-    },
-    "InventoryInput": {
+        },
         "itemCounts": {
             "IRLCorp:MechanicalParts": 1
         }
