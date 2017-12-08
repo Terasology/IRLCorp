@@ -213,8 +213,6 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                         for (Vector3i position : positions) {
                             BlockItemComponent blockItemComponent = itemToPlace.getComponent(BlockItemComponent.class);
                             Block block = blockItemComponent.blockFamily.getBlockForPlacement(
-                                    worldProvider,
-                                    blockEntityRegistry,
                                     position,
                                     Side.inDirection(event.getHitNormal()).reverse(),
                                     Side.inDirection(event.getDirection())

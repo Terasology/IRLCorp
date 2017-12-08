@@ -9,5 +9,5 @@
         "all": "windmill",
         "front": "windmill_front"
     },
-    "rotation" : "horizontal"
+    "family" : "horizontal"
 }

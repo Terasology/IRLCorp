@@ -1,7 +1,7 @@
 {
   "basedOn": "Machines:MetalMachine",
   "displayName": "Fluid Tank",
-  "rotation": "horizontal",
+  "family": "horizontal",
   "entity": {
     "prefab": "FluidTank",
     "keepActive": true

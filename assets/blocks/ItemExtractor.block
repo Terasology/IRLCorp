@@ -5,7 +5,7 @@
     "left": "conveyorbelt_solid_left",
     "right": "conveyorbelt_solid_right"
   },
-  "rotation" : "surfacePlacement",
+  "family" : "surfacePlacement",
   "sides" : { },
   "entity": {
     "prefab": "ItemExtractor",
