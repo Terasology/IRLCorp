@@ -131,11 +131,6 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
     }
 
     @Override
-    public void renderFirstPerson() {
-
-    }
-
-    @Override
     public void renderShadows() {
 
     }
