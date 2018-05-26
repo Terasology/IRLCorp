@@ -6,7 +6,7 @@
     "keepActive": true
   },
   "shape": "StructuralResources:Conn8TwoConLine",
-  "rotation": "Machines:SameNetworkByBlock",
+  "family": "Machines:SameNetworkByBlock",
   "no_connections": {"shape": "StructuralResources:Conn8NoCon"},
   "one_connection": {"shape": "StructuralResources:Conn8OneCon"},
   "line_connection": {"shape": "StructuralResources:Conn8TwoConLine"},

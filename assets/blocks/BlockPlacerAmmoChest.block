@@ -1,7 +1,7 @@
 {
   "basedOn": "SubstanceMatters:Metal",
   "displayName": "Block Placer Ammo Chest",
-  "rotation": "horizontal",
+  "family": "horizontal",
   "tiles": {
     "sides": "MetalChest_Sides",
     "topBottom": "MetalChest_TopBottom"

@@ -1,6 +1,6 @@
 {
   "basedOn": "Machines:MetalMachine",
-  "rotation": "horizontal",
+  "family": "horizontal",
   "tiles": {
     "all": "MachineCasing",
     "front": "Winder"

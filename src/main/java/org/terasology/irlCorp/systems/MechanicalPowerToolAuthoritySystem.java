@@ -65,11 +65,14 @@ import org.terasology.world.block.family.BlockFamily;
 import org.terasology.world.block.items.BlockItemComponent;
 import org.terasology.world.block.items.OnBlockToItem;
 
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
+    private static CollisionGroup[] filter = {StandardCollisionGroup.DEFAULT, StandardCollisionGroup.WORLD};
+
     @In
     BlockEntityRegistry blockEntityRegistry;
     @In
@@ -78,8 +81,6 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
     InventoryManager inventoryManager;
     @In
     WorldProvider worldProvider;
-
-    private static CollisionGroup[] filter = {StandardCollisionGroup.DEFAULT, StandardCollisionGroup.WORLD};
 
     @ReceiveEvent
     public void addIncreaseMaxPower(MechanicalPowerToolPartAddedEvent event, EntityRef item, MechanicalPowerToolIncreaseMaxPowerComponent details) {
@@ -158,7 +159,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         }
     }
 
-    static HitResult getHitResult(EntityRef instigator, Physics physics) {
+    private static HitResult getHitResult(EntityRef instigator, Physics physics) {
         CharacterComponent characterComponent = instigator.getComponent(CharacterComponent.class);
         EntityRef eyeEntity = GazeAuthoritySystem.getGazeEntityForCharacter(instigator);
         LocationComponent location = eyeEntity.getComponent(LocationComponent.class);
@@ -213,8 +214,6 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                         for (Vector3i position : positions) {
                             BlockItemComponent blockItemComponent = itemToPlace.getComponent(BlockItemComponent.class);
                             Block block = blockItemComponent.blockFamily.getBlockForPlacement(
-                                    worldProvider,
-                                    blockEntityRegistry,
                                     position,
                                     Side.inDirection(event.getHitNormal()).reverse(),
                                     Side.inDirection(event.getDirection())
@@ -235,7 +234,8 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         }
     }
 
-    static List<Vector3i> getPotentialBlockPlacementPositions(ToolBlockPlacementComponent blockPlacementComponent, EntityRef characterEntity, WorldProvider worldProvider, Physics physics) {
+    static List<Vector3i> getPotentialBlockPlacementPositions(ToolBlockPlacementComponent blockPlacementComponent, EntityRef characterEntity, WorldProvider worldProvider,
+                                                              Physics physics) {
         List<Vector3i> positions = Lists.newLinkedList();
 
         HitResult hitResult = getHitResult(characterEntity, physics);
@@ -243,11 +243,14 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             BlockFamily buildOnBlockFamily = worldProvider.getBlock(hitResult.getBlockPosition()).getBlockFamily();
 
             for (BaseVector2i pos : SpiralIterable.clockwise(Vector2i.zero()).maxRadius(blockPlacementComponent.maximumRange).build()) {
-                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 1)).add(hitResult.getBlockPosition());
-                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 0)).add(hitResult.getBlockPosition());
+                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 1))
+                        .add(hitResult.getBlockPosition());
+                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 0))
+                        .add(hitResult.getBlockPosition());
                 if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
                         && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
-                        // yes, this does cheat a bit.  It is likely good enough for simplicity sake. Really this check should be done after we have gathered all possible positions.
+                        /* yes, this does cheat a bit.  It is likely good enough for simplicity sake.
+                           Really this check should be done after we have gathered all possible positions. */
                         && connectsToExistingPosition(adjacentPositionToHitFace, positions)
                         && positions.size() < blockPlacementComponent.maximumBlocks) {
                     positions.add(adjacentPositionToHitFace);
@@ -261,7 +264,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             if (direction.y < 0f) {
                 // looking downwards, try and extend the ledge they are on
                 LocationComponent characterLocationComponent = characterEntity.getComponent(LocationComponent.class);
-                Vector3i blockUnderneath = new Vector3i(characterLocationComponent.getWorldPosition(), 0.5f).subY(1);
+                Vector3i blockUnderneath = new Vector3i(characterLocationComponent.getWorldPosition(), RoundingMode.HALF_UP).subY(1);
                 Vector3i previousBlockUnderneath = new Vector3i(blockUnderneath).sub(horizontalLookDirection.getVector3i());
                 if (!worldProvider.getBlock(blockUnderneath).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
                     for (int x = 0; x < characterComponent.interactionRange; x++) {
@@ -313,7 +316,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         return positions;
     }
 
-    static boolean connectsToExistingPosition(Vector3i position, List<Vector3i> existingPositions) {
+    private static boolean connectsToExistingPosition(Vector3i position, List<Vector3i> existingPositions) {
         if (existingPositions.size() == 0) {
             // allow the first position to be valid
             return true;

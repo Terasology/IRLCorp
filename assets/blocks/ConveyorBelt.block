@@ -7,7 +7,7 @@
     "right": "conveyorbelt_side"
   },
   "shape": "halfBlock",
-  "rotation" : "surfacePlacement",
+  "family" : "surfacePlacement",
   "sides" : { },
   "entity": {
     "prefab": "ConveyorBelt",
