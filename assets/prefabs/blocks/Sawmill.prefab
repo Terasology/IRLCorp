@@ -16,7 +16,7 @@
     "inputWidgets": ["IRLCorp:MechanicalPowerGauge"]
   },
   "ProcessRequirementsProviderFromWorkstation": {
-     "requirements": ["Saw"]
+     "requirements": ["Saw", "CrudeSaw"]
   },
   "PotentialEnergyDevice": {
     "maximumStoredEnergy": 200
