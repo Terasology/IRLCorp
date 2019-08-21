@@ -35,7 +35,7 @@ import org.terasology.irlCorp.events.PowerToolUsedEvent;
 import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.characters.GazeAuthoritySystem;
 import org.terasology.logic.common.ActivateEvent;
-import org.terasology.logic.health.DoDamageEvent;
+import org.terasology.logic.health.event.DoDamageEvent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.logic.location.LocationComponent;
