@@ -8,7 +8,7 @@
         ]
     },
     "RotatingAxle": {
-        "renderedBlockFamily": "Core:Plank:StructuralResources:Conn4TwoConLine"
+        "renderedBlockFamily": "CoreBlocks:Plank:StructuralResources:Conn4TwoConLine"
     },
     "DropBlockInventory": {},
     "Network": {},

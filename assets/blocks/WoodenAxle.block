@@ -11,7 +11,7 @@
   "family": "surfacePlacement",
   "shadowCasting": false,
   "archetype": {
-    "tile": "Core:Plank",
+    "tile": "CoreAssets:Plank",
     "translucent": false
   }
 }
