@@ -9,7 +9,7 @@
         {"id": "CoreBlocks", "minVersion": "1.0.0"},
         {"id": "ManualLabor", "minVersion": "1.0.0"},
         {"id": "Machines", "minVersion": "1.0.0"},
-        {"id": "StructuralResources", "minVersion": "1.0.0"},
+        {"id": "StructuralResources", "minVersion": "2.0.0"},
         {"id": "InGameHelp", "minVersion": "1.0.0"},
         {"id": "Durability", "minVersion": "1.0.0"},
         {"id": "MultiBlock", "minVersion": "1.0.0"},
