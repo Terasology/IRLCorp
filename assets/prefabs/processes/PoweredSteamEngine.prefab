@@ -9,7 +9,7 @@
   },
   "FluidOutput": {
     "fluidVolumes": {
-      "fluid:water": 4.5
+      "CoreAssets:Water": 4.5
     }
   },
   "ActivateEngineOutput": {
