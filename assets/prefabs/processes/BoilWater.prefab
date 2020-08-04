@@ -4,7 +4,7 @@
   },
   "FluidInput": {
     "fluidVolumes": {
-      "fluid:water": 10
+      "CoreAssets:Water": 10
     }
   },
   "FluidOutput": {
