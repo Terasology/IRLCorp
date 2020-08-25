@@ -1,0 +1,20 @@
+{
+  "FluidInventory": {
+    "fluidSlots": [ 0 ],
+    "maximumVolumes": [1000]
+  },
+  "FluidInletOutlet": {
+    "inletRate": 500,
+    "outletRate": 500
+  },
+  "EntityNetwork": {},
+  "FluidTransportBlockNetwork": {
+    "isLeaf": true
+  },
+  "Network": {},
+  "ItemHelp": {
+    "paragraphText": [
+      "Transfers liquids between pipes and the world, and has an internal buffer of 1000l"
+    ]
+  }
+}

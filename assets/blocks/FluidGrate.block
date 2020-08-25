@@ -1,0 +1,11 @@
+{
+  "basedOn": "Machines:MetalMachine",
+  "displayName": "Fluid Inlet/Outlet Grate",
+  "entity": {
+    "prefab": "FluidGrate",
+    "keepActive": true
+  },
+  "tiles" : {
+    "all": "FluidGrate"
+  }
+}
