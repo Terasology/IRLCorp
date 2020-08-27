@@ -1,0 +1,20 @@
+{
+    "Parent": "AssemblingBaseProcessPart",
+    "ProcessDefinition": {
+        "processType": "ManualLabor:Assembling"
+    },
+    "RequirementInput": {
+        "requirements": ["Screwdriver"]
+    },
+    "InventoryInput": {
+        "blockCounts": {
+            "ManualLabor:MetalBox": 1,
+            "IRLCorp:FluidPipe": 2
+        }
+    },
+    "InventoryOutput": {
+        "blockCounts": {
+            "IRLCorp:FluidGrate": 1
+        }
+    }
+}
