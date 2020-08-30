@@ -41,6 +41,7 @@ import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.machines.ExtendedInventoryManager;
 import org.terasology.math.Direction;
+import org.terasology.math.JomlUtil;
 import org.terasology.math.Rotation;
 import org.terasology.math.Side;
 import org.terasology.math.Yaw;
@@ -145,7 +146,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                         for (Vector3i relativePosition : damageAdjacentComponent.directions) {
 
                             Vector3i originPosition = blockComponent.getPosition();
-                            Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(result.getHitNormal()), relativePosition).add(originPosition);
+                            Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(result.getHitNormal())), relativePosition).add(originPosition);
 
                             EntityRef adjacentEntityRef = blockEntityRegistry.getBlockEntityAt(adjacentPosition);
                             DoDamageEvent adjacentEvent = new DoDamageEvent(event.getAmount(), event.getDamageType(), toolEntity, toolEntity);
@@ -165,7 +166,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         LocationComponent location = eyeEntity.getComponent(LocationComponent.class);
         Vector3f direction = location.getWorldDirection();
         Vector3f originPos = location.getWorldPosition();
-        return physics.rayTrace(originPos, direction, characterComponent.interactionRange, filter);
+        return physics.rayTrace(JomlUtil.from(originPos), JomlUtil.from(direction), characterComponent.interactionRange, filter);
     }
 
     @ReceiveEvent
@@ -243,10 +244,10 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             BlockFamily buildOnBlockFamily = worldProvider.getBlock(hitResult.getBlockPosition()).getBlockFamily();
 
             for (BaseVector2i pos : SpiralIterable.clockwise(Vector2i.zero()).maxRadius(blockPlacementComponent.maximumRange).build()) {
-                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 1))
-                        .add(hitResult.getBlockPosition());
-                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.getX(), pos.getY(), 0))
-                        .add(hitResult.getBlockPosition());
+                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.getX(), pos.getY(), 1))
+                        .add(JomlUtil.from(hitResult.getBlockPosition()));
+                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.getX(), pos.getY(), 0))
+                        .add(JomlUtil.from(hitResult.getBlockPosition()));
                 if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
                         && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
                         /* yes, this does cheat a bit.  It is likely good enough for simplicity sake.
