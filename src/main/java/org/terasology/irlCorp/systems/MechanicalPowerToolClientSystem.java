@@ -4,13 +4,13 @@ package org.terasology.irlCorp.systems;
 
 import org.joml.Rectanglei;
 import org.joml.Vector2i;
-import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.entitySystem.systems.RenderSystem;
+import org.terasology.gestalt.assets.ResourceUrn;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.ToolBlockPlacementComponent;
 import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
