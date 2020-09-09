@@ -1,8 +1,8 @@
 {
   "type": "IRLCorp:MechanicalPowerGauge",
   "content": {
-        "type": "VerticalProgressBar",
-        "fillTexture": "MechanicalPowerBar",
-        "id": "powerMeter"
-    }
+    "type": "VerticalProgressBar",
+    "fillTexture": "MechanicalPowerBar",
+    "id": "powerMeter"
+  }
 }

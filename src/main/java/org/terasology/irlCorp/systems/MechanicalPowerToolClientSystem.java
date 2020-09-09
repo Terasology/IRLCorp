@@ -4,34 +4,34 @@ package org.terasology.irlCorp.systems;
 
 import org.joml.Rectanglei;
 import org.joml.Vector2i;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.entitySystem.systems.RenderSystem;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.systems.RenderSystem;
+import org.terasology.engine.logic.players.LocalPlayer;
+import org.terasology.engine.physics.Physics;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.rendering.assets.texture.Texture;
+import org.terasology.engine.rendering.assets.texture.TextureUtil;
+import org.terasology.engine.rendering.world.selection.BlockSelectionRenderer;
+import org.terasology.engine.utilities.Assets;
+import org.terasology.engine.world.WorldProvider;
 import org.terasology.gestalt.assets.ResourceUrn;
+import org.terasology.inventory.logic.InventoryManager;
+import org.terasology.inventory.logic.SelectedInventorySlotComponent;
+import org.terasology.inventory.rendering.nui.layers.ingame.GetItemTooltip;
+import org.terasology.inventory.rendering.nui.layers.ingame.InventoryCellRendered;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.ToolBlockPlacementComponent;
 import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
-import org.terasology.logic.inventory.InventoryManager;
-import org.terasology.logic.inventory.SelectedInventorySlotComponent;
-import org.terasology.logic.players.LocalPlayer;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.nui.Canvas;
 import org.terasology.nui.Color;
 import org.terasology.nui.util.RectUtility;
 import org.terasology.nui.widgets.TooltipLine;
-import org.terasology.physics.Physics;
 import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
-import org.terasology.registry.In;
-import org.terasology.rendering.assets.texture.Texture;
-import org.terasology.rendering.assets.texture.TextureUtil;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.layers.ingame.inventory.InventoryCellRendered;
-import org.terasology.rendering.world.selection.BlockSelectionRenderer;
-import org.terasology.utilities.Assets;
-import org.terasology.world.WorldProvider;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class MechanicalPowerToolClientSystem extends BaseComponentSystem implements RenderSystem {
@@ -72,16 +72,20 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
         canvas.drawTexture(Assets.get(backgroundTexture, Texture.class).get(), new Rectanglei(minX, minY, maxX, maxY));
         int barLength = (int) (percentage * (maxX - minX - 1));
         int barHeight = maxY - minY - 1;
-        canvas.drawTexture(Assets.get(barTexture, Texture.class).get(), RectUtility.createFromMinAndSize(minX + 1, minY + 1, barLength, barHeight));
+        canvas.drawTexture(Assets.get(barTexture, Texture.class).get(), RectUtility.createFromMinAndSize(minX + 1,
+                minY + 1, barLength, barHeight));
     }
 
     @ReceiveEvent
-    public void getItemTooltipDamageAdjacent(GetItemTooltip event, EntityRef entityRef, ToolDamageAdjacentComponent damageAdjacentComponent) {
-        event.getTooltipLines().add(new TooltipLine("Damages " + damageAdjacentComponent.directions.size() + " adjacent blocks"));
+    public void getItemTooltipDamageAdjacent(GetItemTooltip event, EntityRef entityRef,
+                                             ToolDamageAdjacentComponent damageAdjacentComponent) {
+        event.getTooltipLines().add(new TooltipLine("Damages " + damageAdjacentComponent.directions.size() + " " +
+                "adjacent blocks"));
     }
 
     @ReceiveEvent
-    public void getItemTooltipBlockPlacement(GetItemTooltip event, EntityRef entityRef, ToolBlockPlacementComponent blockPlacementComponent) {
+    public void getItemTooltipBlockPlacement(GetItemTooltip event, EntityRef entityRef,
+                                             ToolBlockPlacementComponent blockPlacementComponent) {
         event.getTooltipLines().add(new TooltipLine("Places blocks from a block placer ammo chest"));
     }
 
@@ -97,10 +101,13 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
 
     @Override
     public void renderOverlay() {
-        SelectedInventorySlotComponent selectedInventorySlotComponent = localPlayer.getCharacterEntity().getComponent(SelectedInventorySlotComponent.class);
+        SelectedInventorySlotComponent selectedInventorySlotComponent =
+                localPlayer.getCharacterEntity().getComponent(SelectedInventorySlotComponent.class);
         if (selectedInventorySlotComponent != null) {
-            EntityRef selectedItem = inventoryManager.getItemInSlot(localPlayer.getCharacterEntity(), selectedInventorySlotComponent.slot);
-            ToolBlockPlacementComponent blockPlacementComponent = selectedItem.getComponent(ToolBlockPlacementComponent.class);
+            EntityRef selectedItem = inventoryManager.getItemInSlot(localPlayer.getCharacterEntity(),
+                    selectedInventorySlotComponent.slot);
+            ToolBlockPlacementComponent blockPlacementComponent =
+                    selectedItem.getComponent(ToolBlockPlacementComponent.class);
             if (blockPlacementComponent != null) {
                 if (blockSelectionRenderer == null) {
                     Texture texture = Assets.getTexture("engine:selection").get();
@@ -108,7 +115,8 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
                 }
                 blockSelectionRenderer.beginRenderOverlay();
 
-                for (Vector3i position : MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics)) {
+                for (Vector3i position :
+                        MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics)) {
                     blockSelectionRenderer.renderMark(position);
                 }
 

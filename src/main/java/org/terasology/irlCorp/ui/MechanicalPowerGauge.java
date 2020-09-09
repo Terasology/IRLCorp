@@ -3,7 +3,7 @@
 package org.terasology.irlCorp.ui;
 
 import org.joml.Vector2i;
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.machines.ui.VerticalProgressBar;
 import org.terasology.nui.Canvas;
 import org.terasology.nui.CoreWidget;
@@ -40,7 +40,8 @@ public class MechanicalPowerGauge extends CoreWidget implements WorkstationUI {
                 powerMeter.setValue(value);
 
                 setTooltipDelay(0);
-                setTooltip(String.format("Power: %.0f/%.0f", consumer.currentStoredEnergy, consumer.maximumStoredEnergy));
+                setTooltip(String.format("Power: %.0f/%.0f", consumer.currentStoredEnergy,
+                        consumer.maximumStoredEnergy));
             }
         }
     }

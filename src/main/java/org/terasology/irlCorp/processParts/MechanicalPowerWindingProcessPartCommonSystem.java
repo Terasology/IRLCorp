@@ -1,29 +1,16 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.irlCorp.processParts;
 
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.inventory.logic.InventoryManager;
 import org.terasology.irlCorp.components.MechanicalPowerWinderComponent;
-import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.machines.ExtendedInventoryManager;
 import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
-import org.terasology.registry.In;
 import org.terasology.workstation.component.SpecificInputSlotComponent;
 import org.terasology.workstation.process.WorkstationInventoryUtils;
 import org.terasology.workstation.process.inventory.InventoryInputProcessPartCommonSystem;
@@ -42,21 +29,25 @@ public class MechanicalPowerWindingProcessPartCommonSystem extends BaseComponent
     @ReceiveEvent
     public void validateToStartExecution(ProcessEntityIsInvalidToStartEvent event, EntityRef processEntity,
                                          MechanicalPowerWindingComponent mechanicalPowerWindingComponent) {
-        MechanicalPowerWinderComponent winderComponent = event.getWorkstation().getComponent(MechanicalPowerWinderComponent.class);
+        MechanicalPowerWinderComponent winderComponent =
+                event.getWorkstation().getComponent(MechanicalPowerWinderComponent.class);
         if (winderComponent == null) {
             event.consume();
             return;
         }
 
-        PotentialEnergyDeviceComponent consumerComponent = event.getWorkstation().getComponent(PotentialEnergyDeviceComponent.class);
+        PotentialEnergyDeviceComponent consumerComponent =
+                event.getWorkstation().getComponent(PotentialEnergyDeviceComponent.class);
         if (consumerComponent == null
                 || consumerComponent.currentStoredEnergy < winderComponent.maxTransferAmount) {
             event.consume();
             return;
         }
 
-        for (EntityRef entityRef : ExtendedInventoryManager.iterateItems(inventoryManager, event.getWorkstation(), false, InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY)) {
-            PotentialEnergyDeviceComponent mechanicalPowerConsumerComponent = entityRef.getComponent(PotentialEnergyDeviceComponent.class);
+        for (EntityRef entityRef : ExtendedInventoryManager.iterateItems(inventoryManager, event.getWorkstation(),
+                false, InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY)) {
+            PotentialEnergyDeviceComponent mechanicalPowerConsumerComponent =
+                    entityRef.getComponent(PotentialEnergyDeviceComponent.class);
             if (mechanicalPowerConsumerComponent != null) {
                 processEntity.addComponent(new SpecificInputSlotComponent(inventoryManager.findSlotWithItem(event.getWorkstation(), entityRef)));
                 return;
@@ -73,13 +64,17 @@ public class MechanicalPowerWindingProcessPartCommonSystem extends BaseComponent
         EntityRef instigator = event.getInstigator();
 
         MechanicalPowerWinderComponent winderComponent = workstation.getComponent(MechanicalPowerWinderComponent.class);
-        PotentialEnergyDeviceComponent consumerComponent = workstation.getComponent(PotentialEnergyDeviceComponent.class);
-        SpecificInputSlotComponent specificInputSlotComponent = processEntity.getComponent(SpecificInputSlotComponent.class);
+        PotentialEnergyDeviceComponent consumerComponent =
+                workstation.getComponent(PotentialEnergyDeviceComponent.class);
+        SpecificInputSlotComponent specificInputSlotComponent =
+                processEntity.getComponent(SpecificInputSlotComponent.class);
         EntityRef item = inventoryManager.getItemInSlot(workstation, specificInputSlotComponent.slot);
         PotentialEnergyDeviceComponent itemConsumerComponent = item.getComponent(PotentialEnergyDeviceComponent.class);
         if (winderComponent != null && consumerComponent != null && itemConsumerComponent != null) {
-            float spaceAvailableInItem = itemConsumerComponent.maximumStoredEnergy - itemConsumerComponent.currentStoredEnergy;
-            float amountToTransfer = Math.min(Math.min(winderComponent.maxTransferAmount, spaceAvailableInItem), consumerComponent.currentStoredEnergy);
+            float spaceAvailableInItem =
+                    itemConsumerComponent.maximumStoredEnergy - itemConsumerComponent.currentStoredEnergy;
+            float amountToTransfer = Math.min(Math.min(winderComponent.maxTransferAmount, spaceAvailableInItem),
+                    consumerComponent.currentStoredEnergy);
 
             itemConsumerComponent.currentStoredEnergy += amountToTransfer;
             item.saveComponent(itemConsumerComponent);
@@ -95,14 +90,16 @@ public class MechanicalPowerWindingProcessPartCommonSystem extends BaseComponent
                     workstation,
                     specificInputSlotComponent.slot,
                     workstation,
-                    WorkstationInventoryUtils.getAssignedSlots(workstation, true, InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY));
+                    WorkstationInventoryUtils.getAssignedSlots(workstation, true,
+                            InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY));
         }
     }
 
     @ReceiveEvent
     public void getDuration(ProcessEntityGetDurationEvent event, EntityRef processEntity,
                             MechanicalPowerWindingComponent mechanicalPowerWindingComponent) {
-        MechanicalPowerWinderComponent winder = event.getWorkstation().getComponent(MechanicalPowerWinderComponent.class);
+        MechanicalPowerWinderComponent winder =
+                event.getWorkstation().getComponent(MechanicalPowerWinderComponent.class);
         if (winder != null) {
             event.add(winder.recoveryTime / 1000f);
         }
