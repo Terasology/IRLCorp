@@ -16,6 +16,9 @@
   },
   "Network": {
   },
+  "DisplayName": {
+    "name": "Block Placer Ammo Chest"
+  },
   "ItemHelp": {
     "paragraphText": [
       "A block placer tool will use items from here when placing blocks.  Fill it up like a normal chest.  Keep it in your inventory so the block placer can use it."

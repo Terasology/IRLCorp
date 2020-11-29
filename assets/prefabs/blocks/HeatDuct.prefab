@@ -5,6 +5,9 @@
   },
   "Network": {
   },
+  "DisplayName": {
+    "name": "Heat Duct"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The heat pipe can transfer heat from A to B."

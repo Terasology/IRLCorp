@@ -4,6 +4,9 @@
         "isLeaf": false
     },
     "Network": {},
+    "DisplayName": {
+        "name": "Gear Box (Wooden)"
+    },
     "ItemHelp": {
         "paragraphText": [
             "The gearbox can split or redirect power to different machines.  It inputs power from any side, and outputs it to any side."

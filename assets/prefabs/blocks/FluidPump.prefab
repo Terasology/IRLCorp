@@ -20,6 +20,9 @@
     "isLeaf": false
   },
   "Network": {},
+  "DisplayName": {
+    "name": "Fluid Pump"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The fluid pump will take fluid out of the world (like the ocean or lake) or a tank.  Hook it up to power and it will start pumping fluid.",

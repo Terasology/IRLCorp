@@ -21,6 +21,9 @@
   },
   "Network": {
   },
+  "DisplayName": {
+    "name": "Conveyor Belt"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The conveyor belt can transport items from A to B.",
