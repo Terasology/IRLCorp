@@ -5,5 +5,8 @@
     "saturationScale": 0.25,
     "brightnessScale": 1.2
   },
-  "fluidsubstance": {}
+  "fluidsubstance": {},
+  "DisplayName": {
+    "name": "Steam"
+  }
 }
