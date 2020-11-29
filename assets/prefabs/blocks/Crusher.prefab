@@ -28,6 +28,9 @@
   "DropBlockInventory": {},
   "Network": {
   },
+  "DisplayName": {
+    "name": "Crusher"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The crusher can automatically crush all your ores into chunks.  Just give it some power."

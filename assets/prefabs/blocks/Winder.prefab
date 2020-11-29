@@ -29,6 +29,9 @@
   "DropBlockInventory": {},
   "Network": {
   },
+  "DisplayName": {
+    "name": "Winder"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The winder can wind up all your tools."

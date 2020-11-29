@@ -33,6 +33,9 @@
   "DropBlockInventory": {},
   "Network": {
   },
+  "DisplayName": {
+    "name": "Sifter"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The sifter can automatically sift all your ores chunks into their separate substances.  Just give it some power."

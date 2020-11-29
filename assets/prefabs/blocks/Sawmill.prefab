@@ -28,6 +28,9 @@
   "DropBlockInventory": {},
   "Network": {
   },
+  "DisplayName": {
+    "name": "Sawmill"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The sawmill can automatically cut all your logs into planks.  Just give it some power."

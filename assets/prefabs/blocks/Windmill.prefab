@@ -30,6 +30,9 @@
     "rotateWithBlock": true
   },
   "Network": {},
+  "DisplayName": {
+    "name": "Windmill"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The windmill will generate power from natural air currents.  Place a windmill sail inside, and watch the green energy!"
