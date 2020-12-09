@@ -92,14 +92,14 @@ public class MultiBlockTankAuthoritySystem extends BaseComponentSystem {
             HealthComponent healthComponent = new HealthComponent();
 
             // make health scale with size, use the actasblock as a starting value
-            healthComponent.maxHealth = (int) (actAsBlock.block.getArchetypeBlock().getHardness() * ((blockRegion.region.sizeX() * blockRegion.region.sizeY() * blockRegion.region.sizeZ()) / 4f));
+            healthComponent.maxHealth = (int) (actAsBlock.block.getArchetypeBlock().getHardness() * ((blockRegion.region.getSizeX() * blockRegion.region.getSizeY() * blockRegion.region.getSizeZ()) / 4f));
             healthComponent.currentHealth = healthComponent.maxHealth;
 
             // Block regen should always take the same amount of time,  regardless of its hardness
             healthComponent.regenRate = actAsBlock.block.getArchetypeBlock().getHardness() / 4.0f;
             healthComponent.waitBeforeRegen = 1.0f;
             healthComponent.destroyEntityOnNoHealth = true;
-            
+
             entity.addComponent(healthComponent);
         }
     }
