@@ -18,9 +18,12 @@
   },
   "Network": {
   },
+  "DisplayName": {
+    "name": "Item Extractor"
+  },
   "ItemHelp": {
     "paragraphText": [
-      "The item extractyor takes items out of an inventory and puts them into the inventory on the opposite side.  Put conveyor belts on the output side to transport items to any distance.",
+      "The item extractor takes items out of an inventory and puts them into the inventory on the opposite side.  Put conveyor belts on the output side to transport items to any distance.",
       "The placement direction is based on what surface you are pointing at."
     ]
   }

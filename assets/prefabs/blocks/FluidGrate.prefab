@@ -12,6 +12,9 @@
     "isLeaf": true
   },
   "Network": {},
+  "DisplayName": {
+    "name": "Fluid Grate"
+  },
   "ItemHelp": {
     "paragraphText": [
       "Transfers liquids between pipes and the world, and has an internal buffer of 1000l"

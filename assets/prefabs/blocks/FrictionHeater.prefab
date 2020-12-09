@@ -24,6 +24,9 @@
   },
   "Network": {
   },
+  "DisplayName": {
+    "name": "Friction Heater"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The friction heater can be used instead of a firebox.  Just give it some power."

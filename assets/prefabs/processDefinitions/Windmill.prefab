@@ -2,5 +2,8 @@
   "ProcessTypeDescription": {
     "name": "Windmill Operation"
   },
-  "ParticipateInItemCategoryInGameHelp": {}
+  "ParticipateInItemCategoryInGameHelp": {},
+  "DisplayName": {
+    "name": "Windmill"
+  }
 }

@@ -7,6 +7,9 @@
         "isLeaf": false
     },
     "Network": {},
+    "DisplayName": {
+        "name": "Fluid Pipe"
+    },
     "ItemHelp": {
         "paragraphText": [
             "The fluid pipe can hook up to any tank and fill or drain its fluid.",

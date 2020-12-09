@@ -11,6 +11,9 @@
     "isLeaf": true
   },
   "Network": {},
+  "DisplayName": {
+    "name": "Fluid Tank"
+  },
   "ItemHelp": {
     "paragraphText": [
       "The fluid tank can hold 10,000 mL.  Use a full bucket to fill the tank.  And an empty bucket to drain.",
