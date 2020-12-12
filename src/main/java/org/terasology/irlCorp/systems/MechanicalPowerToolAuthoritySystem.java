@@ -211,7 +211,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
                 if (ammoChest.exists() && itemToPlace.exists()) {
                     if (inventoryManager.removeItem(ammoChest, tool, itemToPlace, true, positions.size()) != null) {
-                        Map<Vector3i, Block> placementMap = Maps.newHashMap();
+                        Map<org.joml.Vector3i, Block> placementMap = Maps.newHashMap();
                         for (Vector3i position : positions) {
                             BlockItemComponent blockItemComponent = itemToPlace.getComponent(BlockItemComponent.class);
                             Block block = blockItemComponent.blockFamily.getBlockForPlacement(
@@ -219,7 +219,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                                     Side.inDirection(event.getHitNormal()).reverse(),
                                     Side.inDirection(event.getDirection())
                             );
-                            placementMap.put(position, block);
+                            placementMap.put(JomlUtil.from(position), block);
                         }
 
                         PlaceBlocks placeBlocks = new PlaceBlocks(placementMap, instigator);

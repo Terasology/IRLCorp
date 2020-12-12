@@ -35,6 +35,7 @@ import org.terasology.multiBlock.recipe.UniformMultiBlockFormItemRecipe;
 import org.terasology.registry.In;
 import org.terasology.world.BlockEntityRegistry;
 import org.terasology.world.block.Block;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.block.regions.ActAsBlockComponent;
 import org.terasology.world.block.regions.BlockRegionComponent;
 
@@ -59,16 +60,16 @@ public class MultiBlockTankAuthoritySystem extends BaseComponentSystem {
                 "IRLCorp:MultiBlockTank",
                 new MultiBlockCallback<Void>() {
                     @Override
-                    public Map<Vector3i, Block> getReplacementMap(Region3i region, Void designDetails) {
+                    public Map<org.joml.Vector3i, Block> getReplacementMap(BlockRegion region, Void designDetails) {
                         return null;
                     }
 
                     @Override
-                    public void multiBlockFormed(Region3i region, EntityRef entity, Void designDetails) {
-                        double bonusFromFootprint = Math.pow(1.2, Math.min(region.sizeX(), region.sizeZ() * 0.5));
+                    public void multiBlockFormed(BlockRegion region, EntityRef entity, Void designDetails) {
+                        double bonusFromFootprint = Math.pow(1.2, Math.min(region.getSizeX(), region.getSizeZ() * 0.5));
                         FluidInventoryComponent fluidInventoryComponent = new FluidInventoryComponent(
                                 1,
-                                (float) (region.size().x * region.size().y * region.size().z * 10000 * bonusFromFootprint));
+                                (float) (region.getSizeX() * region.getSizeY() * region.getSizeZ() * 10000 * bonusFromFootprint));
                         if (entity.hasComponent(FluidInventoryComponent.class)) {
                             entity.saveComponent(fluidInventoryComponent);
                         } else {
