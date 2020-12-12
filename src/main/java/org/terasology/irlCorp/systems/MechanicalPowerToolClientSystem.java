@@ -4,6 +4,7 @@ package org.terasology.irlCorp.systems;
 
 import org.joml.Rectanglei;
 import org.joml.Vector2i;
+import org.joml.Vector3i;
 import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -17,7 +18,7 @@ import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.SelectedInventorySlotComponent;
 import org.terasology.logic.players.LocalPlayer;
-import org.terasology.math.geom.Vector3i;
+import org.terasology.math.JomlUtil;
 import org.terasology.nui.Canvas;
 import org.terasology.nui.Color;
 import org.terasology.nui.util.RectUtility;
@@ -109,7 +110,7 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
                 blockSelectionRenderer.beginRenderOverlay();
 
                 for (Vector3i position : MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics)) {
-                    blockSelectionRenderer.renderMark(position);
+                    blockSelectionRenderer.renderMark(JomlUtil.from(position));
                 }
 
                 blockSelectionRenderer.endRenderOverlay();
