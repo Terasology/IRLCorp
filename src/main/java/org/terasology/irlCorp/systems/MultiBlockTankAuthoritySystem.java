@@ -66,10 +66,10 @@ public class MultiBlockTankAuthoritySystem extends BaseComponentSystem {
 
                     @Override
                     public void multiBlockFormed(BlockRegion region, EntityRef entity, Void designDetails) {
-                        double bonusFromFootprint = Math.pow(1.2, Math.min(region.getSizeX(), region.getSizeZ() * 0.5));
+                        double bonusFromFootprint = Math.pow(1.2, Math.min(region.sizeX(), region.sizeZ() * 0.5));
                         FluidInventoryComponent fluidInventoryComponent = new FluidInventoryComponent(
                                 1,
-                                (float) (region.getSizeX() * region.getSizeY() * region.getSizeZ() * 10000 * bonusFromFootprint));
+                                (float) (region.sizeX() * region.sizeY() * region.sizeZ() * 10000 * bonusFromFootprint));
                         if (entity.hasComponent(FluidInventoryComponent.class)) {
                             entity.saveComponent(fluidInventoryComponent);
                         } else {
@@ -93,7 +93,7 @@ public class MultiBlockTankAuthoritySystem extends BaseComponentSystem {
             HealthComponent healthComponent = new HealthComponent();
 
             // make health scale with size, use the actasblock as a starting value
-            healthComponent.maxHealth = (int) (actAsBlock.block.getArchetypeBlock().getHardness() * ((blockRegion.region.getSizeX() * blockRegion.region.getSizeY() * blockRegion.region.getSizeZ()) / 4f));
+            healthComponent.maxHealth = (int) (actAsBlock.block.getArchetypeBlock().getHardness() * ((blockRegion.region.sizeX() * blockRegion.region.sizeY() * blockRegion.region.sizeZ()) / 4f));
             healthComponent.currentHealth = healthComponent.maxHealth;
 
             // Block regen should always take the same amount of time,  regardless of its hardness
