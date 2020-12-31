@@ -4,6 +4,7 @@ package org.terasology.irlCorp.systems;
 
 import org.joml.Rectanglei;
 import org.joml.Vector2i;
+import org.joml.Vector3i;
 import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -17,7 +18,6 @@ import org.terasology.irlCorp.components.ToolDamageAdjacentComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.SelectedInventorySlotComponent;
 import org.terasology.logic.players.LocalPlayer;
-import org.terasology.math.geom.Vector3i;
 import org.terasology.nui.Canvas;
 import org.terasology.nui.Color;
 import org.terasology.nui.util.RectUtility;
@@ -32,6 +32,8 @@ import org.terasology.rendering.nui.layers.ingame.inventory.InventoryCellRendere
 import org.terasology.rendering.world.selection.BlockSelectionRenderer;
 import org.terasology.utilities.Assets;
 import org.terasology.world.WorldProvider;
+
+import java.util.List;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class MechanicalPowerToolClientSystem extends BaseComponentSystem implements RenderSystem {
@@ -108,7 +110,9 @@ public class MechanicalPowerToolClientSystem extends BaseComponentSystem impleme
                 }
                 blockSelectionRenderer.beginRenderOverlay();
 
-                for (Vector3i position : MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics)) {
+                final List<Vector3i> placementPositions =
+                        MechanicalPowerToolAuthoritySystem.getPotentialBlockPlacementPositions(blockPlacementComponent, localPlayer.getCharacterEntity(), worldProvider, physics);
+                for (Vector3i position : placementPositions) {
                     blockSelectionRenderer.renderMark(position);
                 }
 

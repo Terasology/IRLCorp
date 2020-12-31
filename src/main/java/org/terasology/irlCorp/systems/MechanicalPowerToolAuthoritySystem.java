@@ -17,6 +17,12 @@ package org.terasology.irlCorp.systems;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.joml.RoundingMode;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.terasology.RotationUtils;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -44,12 +50,8 @@ import org.terasology.math.Direction;
 import org.terasology.math.JomlUtil;
 import org.terasology.math.Rotation;
 import org.terasology.math.Side;
+import org.terasology.math.SpiralIterable;
 import org.terasology.math.Yaw;
-import org.terasology.math.geom.BaseVector2i;
-import org.terasology.math.geom.SpiralIterable;
-import org.terasology.math.geom.Vector2i;
-import org.terasology.math.geom.Vector3f;
-import org.terasology.math.geom.Vector3i;
 import org.terasology.physics.CollisionGroup;
 import org.terasology.physics.HitResult;
 import org.terasology.physics.Physics;
@@ -63,10 +65,10 @@ import org.terasology.world.block.BlockComponent;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.entity.placement.PlaceBlocks;
 import org.terasology.world.block.family.BlockFamily;
+import org.terasology.world.block.family.BlockPlacementData;
 import org.terasology.world.block.items.BlockItemComponent;
 import org.terasology.world.block.items.OnBlockToItem;
 
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
@@ -145,7 +147,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                         // loop through each of the directions to damage, reorienting each with what side the block was hit on.
                         for (Vector3i relativePosition : damageAdjacentComponent.directions) {
 
-                            Vector3i originPosition = blockComponent.getPosition();
+                            Vector3i originPosition = blockComponent.getPosition(new Vector3i());
                             Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(result.getHitNormal())), relativePosition).add(originPosition);
 
                             EntityRef adjacentEntityRef = blockEntityRegistry.getBlockEntityAt(adjacentPosition);
@@ -164,9 +166,9 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         CharacterComponent characterComponent = instigator.getComponent(CharacterComponent.class);
         EntityRef eyeEntity = GazeAuthoritySystem.getGazeEntityForCharacter(instigator);
         LocationComponent location = eyeEntity.getComponent(LocationComponent.class);
-        Vector3f direction = location.getWorldDirection();
-        Vector3f originPos = location.getWorldPosition();
-        return physics.rayTrace(JomlUtil.from(originPos), JomlUtil.from(direction), characterComponent.interactionRange, filter);
+        Vector3f direction = location.getWorldDirection(new Vector3f());
+        Vector3f originPos = location.getWorldPosition(new Vector3f());
+        return physics.rayTrace(originPos, direction, characterComponent.interactionRange, filter);
     }
 
     @ReceiveEvent
@@ -211,15 +213,15 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
                 if (ammoChest.exists() && itemToPlace.exists()) {
                     if (inventoryManager.removeItem(ammoChest, tool, itemToPlace, true, positions.size()) != null) {
-                        Map<org.joml.Vector3i, Block> placementMap = Maps.newHashMap();
+                        Map<Vector3i, Block> placementMap = Maps.newHashMap();
                         for (Vector3i position : positions) {
                             BlockItemComponent blockItemComponent = itemToPlace.getComponent(BlockItemComponent.class);
-                            Block block = blockItemComponent.blockFamily.getBlockForPlacement(
-                                    position,
-                                    Side.inDirection(event.getHitNormal()).reverse(),
-                                    Side.inDirection(event.getDirection())
+                            Block block = blockItemComponent.blockFamily.getBlockForPlacement(new BlockPlacementData(
+                                position,
+                                Side.inDirection(event.getHitNormal()).reverse(),
+                                event.getDirection())
                             );
-                            placementMap.put(JomlUtil.from(position), block);
+                            placementMap.put(position, block);
                         }
 
                         PlaceBlocks placeBlocks = new PlaceBlocks(placementMap, instigator);
@@ -243,47 +245,47 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
         if (hitResult.isWorldHit()) {
             BlockFamily buildOnBlockFamily = worldProvider.getBlock(hitResult.getBlockPosition()).getBlockFamily();
 
-            for (BaseVector2i pos : SpiralIterable.clockwise(Vector2i.zero()).maxRadius(blockPlacementComponent.maximumRange).build()) {
-                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.getX(), pos.getY(), 1))
-                        .add(JomlUtil.from(hitResult.getBlockPosition()));
-                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.getX(), pos.getY(), 0))
-                        .add(JomlUtil.from(hitResult.getBlockPosition()));
+            for (Vector2ic pos : SpiralIterable.clockwise(new Vector2i()).maxRadius(blockPlacementComponent.maximumRange).build()) {
+                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.x(), pos.y(), 1))
+                    .add(hitResult.getBlockPosition());
+                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.x(), pos.y(), 0))
+                    .add(hitResult.getBlockPosition());
                 if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
-                        && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
+                    && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
                         /* yes, this does cheat a bit.  It is likely good enough for simplicity sake.
                            Really this check should be done after we have gathered all possible positions. */
-                        && connectsToExistingPosition(adjacentPositionToHitFace, positions)
-                        && positions.size() < blockPlacementComponent.maximumBlocks) {
+                    && connectsToExistingPosition(adjacentPositionToHitFace, positions)
+                    && positions.size() < blockPlacementComponent.maximumBlocks) {
                     positions.add(adjacentPositionToHitFace);
                 }
             }
         } else {
             CharacterComponent characterComponent = characterEntity.getComponent(CharacterComponent.class);
             LocationComponent locationComponent = GazeAuthoritySystem.getGazeEntityForCharacter(characterEntity).getComponent(LocationComponent.class);
-            Vector3f direction = locationComponent.getWorldDirection();
+            Vector3f direction = locationComponent.getWorldDirection(new Vector3f());
             Direction horizontalLookDirection = Direction.inDirection(direction.x, 0f, direction.z);
             if (direction.y < 0f) {
                 // looking downwards, try and extend the ledge they are on
                 LocationComponent characterLocationComponent = characterEntity.getComponent(LocationComponent.class);
-                Vector3i blockUnderneath = new Vector3i(characterLocationComponent.getWorldPosition(), RoundingMode.HALF_UP).subY(1);
-                Vector3i previousBlockUnderneath = new Vector3i(blockUnderneath).sub(horizontalLookDirection.getVector3i());
+                Vector3i blockUnderneath = new Vector3i(characterLocationComponent.getWorldPosition(new Vector3f()), RoundingMode.HALF_UP).sub(0, 1, 0);
+                Vector3i previousBlockUnderneath = new Vector3i(blockUnderneath).sub(horizontalLookDirection.asVector3i());
                 if (!worldProvider.getBlock(blockUnderneath).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
                     for (int x = 0; x < characterComponent.interactionRange; x++) {
-                        blockUnderneath.add(horizontalLookDirection.getVector3i());
-                        previousBlockUnderneath.add(horizontalLookDirection.getVector3i());
+                        blockUnderneath.add(horizontalLookDirection.asVector3i());
+                        previousBlockUnderneath.add(horizontalLookDirection.asVector3i());
                         if (worldProvider.getBlock(blockUnderneath).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
                             // we have found some air within reach
                             positions.add(new Vector3i(blockUnderneath));
 
                             Rotation leftRotation = Rotation.rotate(Yaw.CLOCKWISE_270);
-                            Vector3i leftVector = leftRotation.rotate(horizontalLookDirection.toSide()).getVector3i();
+                            Vector3ic leftVector = leftRotation.rotate(horizontalLookDirection.toSide()).direction();
                             Vector3i currentPosition = new Vector3i(blockUnderneath);
                             Vector3i ledgePosition = new Vector3i(previousBlockUnderneath);
                             for (int left = 1; left < blockPlacementComponent.maximumRange && positions.size() < blockPlacementComponent.maximumBlocks; left++) {
                                 currentPosition.add(leftVector);
                                 ledgePosition.add(leftVector);
                                 if (worldProvider.getBlock(currentPosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
-                                        && !worldProvider.getBlock(ledgePosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
+                                    && !worldProvider.getBlock(ledgePosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
                                     positions.add(new Vector3i(currentPosition));
                                 } else {
                                     break;
@@ -291,14 +293,14 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                             }
 
                             Rotation rightRotation = Rotation.rotate(Yaw.CLOCKWISE_90);
-                            Vector3i rightVector = rightRotation.rotate(horizontalLookDirection.toSide()).getVector3i();
+                            Vector3ic rightVector = rightRotation.rotate(horizontalLookDirection.toSide()).direction();
                             currentPosition = new Vector3i(blockUnderneath);
                             ledgePosition = new Vector3i(previousBlockUnderneath);
                             for (int right = 1; right < blockPlacementComponent.maximumRange && positions.size() < blockPlacementComponent.maximumBlocks; right++) {
                                 currentPosition.add(rightVector);
                                 ledgePosition.add(rightVector);
                                 if (worldProvider.getBlock(currentPosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
-                                        && !worldProvider.getBlock(ledgePosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
+                                    && !worldProvider.getBlock(ledgePosition).getBlockFamily().getURI().equals(BlockManager.AIR_ID)) {
                                     positions.add(new Vector3i(currentPosition));
                                 } else {
                                     break;
