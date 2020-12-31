@@ -213,7 +213,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
 
                 if (ammoChest.exists() && itemToPlace.exists()) {
                     if (inventoryManager.removeItem(ammoChest, tool, itemToPlace, true, positions.size()) != null) {
-                        Map<org.joml.Vector3i, Block> placementMap = Maps.newHashMap();
+                        Map<Vector3i, Block> placementMap = Maps.newHashMap();
                         for (Vector3i position : positions) {
                             BlockItemComponent blockItemComponent = itemToPlace.getComponent(BlockItemComponent.class);
                             Block block = blockItemComponent.blockFamily.getBlockForPlacement(new BlockPlacementData(
@@ -246,9 +246,9 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             BlockFamily buildOnBlockFamily = worldProvider.getBlock(hitResult.getBlockPosition()).getBlockFamily();
 
             for (Vector2ic pos : SpiralIterable.clockwise(new Vector2i()).maxRadius(blockPlacementComponent.maximumRange).build()) {
-                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new org.joml.Vector3i(pos.x(), pos.y(), 1))
+                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.x(), pos.y(), 1))
                     .add(hitResult.getBlockPosition());
-                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new org.joml.Vector3i(pos.x(), pos.y(), 0))
+                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.x(), pos.y(), 0))
                     .add(hitResult.getBlockPosition());
                 if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
                     && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
