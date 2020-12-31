@@ -221,10 +221,10 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                                 Side.inDirection(event.getHitNormal()).reverse(),
                                 event.getDirection())
                             );
-                            placementMap.put(JomlUtil.from(position), block);
+                            placementMap.put(position, block);
                         }
 
-                        PlaceBlocks placeBlocks = new PlaceBlocks(JomlUtil.blockMap(placementMap), instigator);
+                        PlaceBlocks placeBlocks = new PlaceBlocks(placementMap, instigator);
                         worldProvider.getWorldEntity().send(placeBlocks);
                         if (!placeBlocks.isConsumed()) {
                             tool.send(new PowerToolUsedEvent(power));
