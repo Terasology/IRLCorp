@@ -26,8 +26,6 @@ import org.terasology.irlCorp.components.MultiBlockActivatorComponent;
 import org.terasology.irlCorp.components.MultiBlockFluidTankComponent;
 import org.terasology.irlCorp.components.MultiBlockTankWallComponent;
 import org.terasology.logic.health.HealthComponent;
-import org.terasology.math.Region3i;
-import org.terasology.math.geom.Vector3i;
 import org.terasology.multiBlock.MultiBlockCallback;
 import org.terasology.multiBlock.MultiBlockFormRecipeRegistry;
 import org.terasology.multiBlock.recipe.MultiBlockFormItemRecipe;
