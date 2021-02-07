@@ -47,7 +47,6 @@ import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.machines.ExtendedInventoryManager;
 import org.terasology.math.Direction;
-import org.terasology.math.JomlUtil;
 import org.terasology.math.Rotation;
 import org.terasology.math.Side;
 import org.terasology.math.SpiralIterable;
@@ -148,7 +147,7 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
                         for (Vector3i relativePosition : damageAdjacentComponent.directions) {
 
                             Vector3i originPosition = blockComponent.getPosition(new Vector3i());
-                            Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(result.getHitNormal())), relativePosition).add(originPosition);
+                            Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(result.getHitNormal()), relativePosition).add(originPosition);
 
                             EntityRef adjacentEntityRef = blockEntityRegistry.getBlockEntityAt(adjacentPosition);
                             DoDamageEvent adjacentEvent = new DoDamageEvent(event.getAmount(), event.getDamageType(), toolEntity, toolEntity);
@@ -246,9 +245,9 @@ public class MechanicalPowerToolAuthoritySystem extends BaseComponentSystem {
             BlockFamily buildOnBlockFamily = worldProvider.getBlock(hitResult.getBlockPosition()).getBlockFamily();
 
             for (Vector2ic pos : SpiralIterable.clockwise(new Vector2i()).maxRadius(blockPlacementComponent.maximumRange).build()) {
-                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.x(), pos.y(), 1))
+                Vector3i adjacentPositionToHitFace = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.x(), pos.y(), 1))
                     .add(hitResult.getBlockPosition());
-                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(JomlUtil.from(hitResult.getHitNormal())), new Vector3i(pos.x(), pos.y(), 0))
+                Vector3i adjacentPosition = RotationUtils.rotateVector3i(Direction.inDirection(hitResult.getHitNormal()), new Vector3i(pos.x(), pos.y(), 0))
                     .add(hitResult.getBlockPosition());
                 if (worldProvider.getBlock(adjacentPositionToHitFace).getBlockFamily().getURI().equals(BlockManager.AIR_ID)
                     && worldProvider.getBlock(adjacentPosition).getBlockFamily().equals(buildOnBlockFamily)
