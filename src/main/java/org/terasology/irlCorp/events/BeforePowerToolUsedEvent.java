@@ -15,7 +15,7 @@
  */
 package org.terasology.irlCorp.events;
 
-import org.terasology.entitySystem.event.AbstractConsumableEvent;
+import org.terasology.engine.entitySystem.event.AbstractConsumableEvent;
 
 public class BeforePowerToolUsedEvent extends AbstractConsumableEvent {
     float amount;

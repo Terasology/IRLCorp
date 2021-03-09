@@ -15,7 +15,7 @@
  */
 package org.terasology.irlCorp.components;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.engine.entitySystem.Component;
 
 public class MechanicalPowerToolDamageAdjacentComponent implements Component {
     public int amount = 1;

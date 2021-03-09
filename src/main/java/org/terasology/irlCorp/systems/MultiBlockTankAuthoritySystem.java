@@ -15,27 +15,27 @@
  */
 package org.terasology.irlCorp.systems;
 
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.entity.lifecycleEvents.OnActivatedComponent;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.lifecycleEvents.OnActivatedComponent;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.logic.health.HealthComponent;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.world.BlockEntityRegistry;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.block.BlockRegion;
+import org.terasology.engine.world.block.regions.ActAsBlockComponent;
+import org.terasology.engine.world.block.regions.BlockRegionComponent;
 import org.terasology.fluid.component.FluidInventoryComponent;
 import org.terasology.irlCorp.components.MultiBlockActivatorComponent;
 import org.terasology.irlCorp.components.MultiBlockFluidTankComponent;
 import org.terasology.irlCorp.components.MultiBlockTankWallComponent;
-import org.terasology.logic.health.HealthComponent;
 import org.terasology.multiBlock.MultiBlockCallback;
 import org.terasology.multiBlock.MultiBlockFormRecipeRegistry;
 import org.terasology.multiBlock.recipe.MultiBlockFormItemRecipe;
 import org.terasology.multiBlock.recipe.UniformMultiBlockFormItemRecipe;
-import org.terasology.registry.In;
-import org.terasology.world.BlockEntityRegistry;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.block.regions.ActAsBlockComponent;
-import org.terasology.world.block.regions.BlockRegionComponent;
 
 import java.util.Map;
 

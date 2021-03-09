@@ -15,7 +15,7 @@
  */
 package org.terasology.irlCorp.components;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.engine.entitySystem.Component;
 
 public class MultiBlockFluidTankComponent implements Component {
 }

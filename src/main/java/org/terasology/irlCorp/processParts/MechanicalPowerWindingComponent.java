@@ -15,7 +15,7 @@
  */
 package org.terasology.irlCorp.processParts;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.engine.entitySystem.Component;
 
 public class MechanicalPowerWindingComponent implements Component {
 }

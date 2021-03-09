@@ -17,7 +17,7 @@ package org.terasology.irlCorp.components;
 
 import com.google.common.collect.Lists;
 import org.joml.Vector3i;
-import org.terasology.entitySystem.Component;
+import org.terasology.engine.entitySystem.Component;
 
 import java.util.List;
 
