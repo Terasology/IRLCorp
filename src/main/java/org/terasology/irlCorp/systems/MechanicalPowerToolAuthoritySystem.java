@@ -32,7 +32,7 @@ import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.logic.characters.CharacterComponent;
 import org.terasology.engine.logic.characters.GazeAuthoritySystem;
 import org.terasology.engine.logic.common.ActivateEvent;
-import org.terasology.engine.logic.health.event.DoDamageEvent;
+import org.terasology.logic.health.event.DoDamageEvent;
 import org.terasology.engine.logic.inventory.InventoryManager;
 import org.terasology.engine.logic.inventory.ItemComponent;
 import org.terasology.engine.logic.location.LocationComponent;
