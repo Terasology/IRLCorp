@@ -19,7 +19,7 @@ import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
-import org.terasology.engine.logic.inventory.InventoryManager;
+import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.engine.registry.In;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolPartComponent;
