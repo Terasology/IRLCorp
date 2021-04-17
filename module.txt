@@ -5,19 +5,58 @@
     "displayName": "IRL Corp",
     "description": "IRL Corp - for the industrialized reduction of labor",
     "dependencies": [
-        { "id": "CoreAssets", "minVersion": "2.0.1" },
-        { "id": "Durability", "minVersion": "1.1.0" },
-        { "id": "Fluid", "minVersion": "2.0.0" },
-        { "id": "Health", "minVersion": "1.0.0" },
-        { "id": "InGameHelp", "minVersion": "1.1.0" },
-        { "id": "Inventory", "minVersion": "1.1.0" },
-        { "id": "ItemRendering", "minVersion": "1.1.0" },
-        { "id": "Machines", "minVersion": "1.2.0" },
-        { "id": "ManualLabor", "minVersion": "1.3.0" },
-        { "id": "MultiBlock", "minVersion": "1.1.0" },
-        { "id": "PotentialEnergyDevices", "minVersion": "1.1.0" },
-        { "id": "StructuralResources", "minVersion": "2.1.0" },
-        { "id": "Workstation", "minVersion": "1.1.0" }
+        {
+            "id": "CoreAssets",
+            "minVersion": "2.0.1"
+        },
+        {
+            "id": "Durability",
+            "minVersion": "1.1.0"
+        },
+        {
+            "id": "Fluid",
+            "minVersion": "2.0.0"
+        },
+        {
+            "id": "Health",
+            "minVersion": "2.0.0-SNAPSHOT"
+        },
+        {
+            "id": "InGameHelp",
+            "minVersion": "1.1.0"
+        },
+        {
+            "id": "Inventory",
+            "minVersion": "1.1.0"
+        },
+        {
+            "id": "ItemRendering",
+            "minVersion": "1.1.0"
+        },
+        {
+            "id": "Machines",
+            "minVersion": "1.2.0"
+        },
+        {
+            "id": "ManualLabor",
+            "minVersion": "1.3.0"
+        },
+        {
+            "id": "MultiBlock",
+            "minVersion": "1.1.0"
+        },
+        {
+            "id": "PotentialEnergyDevices",
+            "minVersion": "1.1.0"
+        },
+        {
+            "id": "StructuralResources",
+            "minVersion": "2.1.0"
+        },
+        {
+            "id": "Workstation",
+            "minVersion": "1.1.0"
+        }
     ],
     "isLibrary": true,
     "isAsset": true
