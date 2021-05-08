@@ -111,14 +111,6 @@ public class MultiBlockTankAuthoritySystem extends BaseComponentSystem {
 
                 entity.addComponent(baseRegenComponent);
             }
-
-            if (!entity.hasComponent(RegenComponent.class)) {
-                //TODO: should this just send a registration event instead of creating the component on it's own?
-                RegenComponent regenComponent = new RegenComponent();
-                regenComponent.actions.put(BaseRegenAuthoritySystem.BASE_REGEN, Instant.NEVER);
-
-                entity.addComponent(regenComponent);
-            }
         }
     }
 }
