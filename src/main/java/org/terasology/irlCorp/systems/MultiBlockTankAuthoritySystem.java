@@ -21,7 +21,6 @@ import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
-import org.terasology.module.health.components.HealthComponent;
 import org.terasology.engine.registry.In;
 import org.terasology.engine.world.BlockEntityRegistry;
 import org.terasology.engine.world.block.Block;
@@ -32,6 +31,11 @@ import org.terasology.fluid.component.FluidInventoryComponent;
 import org.terasology.irlCorp.components.MultiBlockActivatorComponent;
 import org.terasology.irlCorp.components.MultiBlockFluidTankComponent;
 import org.terasology.irlCorp.components.MultiBlockTankWallComponent;
+import org.terasology.module.health.components.HealthComponent;
+import org.terasology.module.health.components.RegenComponent;
+import org.terasology.module.health.core.BaseRegenAuthoritySystem;
+import org.terasology.module.health.core.BaseRegenComponent;
+import org.terasology.module.health.time.Instant;
 import org.terasology.multiBlock.MultiBlockCallback;
 import org.terasology.multiBlock.MultiBlockFormRecipeRegistry;
 import org.terasology.multiBlock.recipe.MultiBlockFormItemRecipe;
@@ -87,19 +91,26 @@ public class MultiBlockTankAuthoritySystem extends BaseComponentSystem {
                                                ActAsBlockComponent actAsBlock,
                                                MultiBlockFluidTankComponent multiBlockFluidTank) {
         // Add health to the entity similarly to how block entities get health.
-        if (actAsBlock.block != null && actAsBlock.block.getArchetypeBlock().isDestructible() && !entity.hasComponent(HealthComponent.class)) {
-            HealthComponent healthComponent = new HealthComponent();
+        if (actAsBlock.block != null && actAsBlock.block.getArchetypeBlock().isDestructible()) {
+            if (!entity.hasComponent(HealthComponent.class)) {
+                HealthComponent healthComponent = new HealthComponent();
 
-            // make health scale with size, use the actasblock as a starting value
-            healthComponent.maxHealth = (int) (actAsBlock.block.getArchetypeBlock().getHardness() * ((blockRegion.region.getSizeX() * blockRegion.region.getSizeY() * blockRegion.region.getSizeZ()) / 4f));
-            healthComponent.currentHealth = healthComponent.maxHealth;
+                // make health scale with size, use the actasblock as a starting value
+                healthComponent.maxHealth =
+                        (int) (actAsBlock.block.getArchetypeBlock().getHardness() * ((blockRegion.region.getSizeX() * blockRegion.region.getSizeY() * blockRegion.region.getSizeZ()) / 4f));
+                healthComponent.currentHealth = healthComponent.maxHealth;
+                healthComponent.destroyEntityOnNoHealth = true;
 
-            // Block regen should always take the same amount of time,  regardless of its hardness
-            healthComponent.regenRate = actAsBlock.block.getArchetypeBlock().getHardness() / 4.0f;
-            healthComponent.waitBeforeRegen = 1.0f;
-            healthComponent.destroyEntityOnNoHealth = true;
+                entity.addComponent(healthComponent);
+            }
 
-            entity.addComponent(healthComponent);
+            if (!entity.hasComponent(BaseRegenComponent.class)) {
+                BaseRegenComponent baseRegenComponent = new BaseRegenComponent();
+                baseRegenComponent.regenRate = actAsBlock.block.getArchetypeBlock().getHardness() / 4.0f;
+                baseRegenComponent.waitBeforeRegen = 1f;
+
+                entity.addComponent(baseRegenComponent);
+            }
         }
     }
 }
