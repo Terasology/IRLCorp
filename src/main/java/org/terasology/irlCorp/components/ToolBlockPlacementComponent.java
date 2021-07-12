@@ -10,4 +10,10 @@ public class ToolBlockPlacementComponent implements Component<ToolBlockPlacement
     public int maximumRange = 5;
     @Replicate
     public int maximumBlocks = 10;
+
+    @Override
+    public void copy(ToolBlockPlacementComponent other) {
+        this.maximumBlocks = other.maximumBlocks;
+        this.maximumRange = other.maximumRange;
+    }
 }

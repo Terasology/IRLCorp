@@ -5,4 +5,7 @@ package org.terasology.irlCorp.components;
 import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MechanicalPowerToolPartComponent implements Component<MechanicalPowerToolPartComponent> {
+    @Override
+    public void copy(MechanicalPowerToolPartComponent other) {
+    }
 }

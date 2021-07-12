@@ -5,4 +5,8 @@ package org.terasology.irlCorp.components;
 import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MultiBlockFluidTankComponent implements Component<MultiBlockFluidTankComponent> {
+    @Override
+    public void copy(MultiBlockFluidTankComponent other) {
+
+    }
 }

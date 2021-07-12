@@ -7,4 +7,10 @@ import org.terasology.gestalt.entitysystem.component.Component;
 public class MechanicalPowerWinderComponent implements Component<MechanicalPowerWinderComponent> {
     public long recoveryTime;
     public int maxTransferAmount;
+
+    @Override
+    public void copy(MechanicalPowerWinderComponent other) {
+        this.recoveryTime = other.recoveryTime;
+        this.maxTransferAmount = other.maxTransferAmount;
+    }
 }

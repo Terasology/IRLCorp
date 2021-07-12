@@ -6,4 +6,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MechanicalPowerToolIncreaseMaxPowerComponent implements Component<MechanicalPowerToolIncreaseMaxPowerComponent> {
     public float amount = 0;
+
+    @Override
+    public void copy(MechanicalPowerToolIncreaseMaxPowerComponent other) {
+        this.amount = other.amount;
+    }
 }

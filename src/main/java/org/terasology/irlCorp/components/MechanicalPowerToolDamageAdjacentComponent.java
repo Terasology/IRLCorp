@@ -6,4 +6,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MechanicalPowerToolDamageAdjacentComponent implements Component<MechanicalPowerToolDamageAdjacentComponent> {
     public int amount = 1;
+
+    @Override
+    public void copy(MechanicalPowerToolDamageAdjacentComponent other) {
+        this.amount = other.amount;
+    }
 }

@@ -5,4 +5,8 @@ package org.terasology.irlCorp.components;
 import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MultiBlockActivatorComponent implements Component<MultiBlockActivatorComponent> {
+    @Override
+    public void copy(MultiBlockActivatorComponent other) {
+
+    }
 }

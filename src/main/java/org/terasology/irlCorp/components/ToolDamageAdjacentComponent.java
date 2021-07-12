@@ -21,4 +21,9 @@ public class ToolDamageAdjacentComponent implements Component<ToolDamageAdjacent
     };
 
     public List<Vector3i> directions = Lists.newArrayList();
+
+    @Override
+    public void copy(ToolDamageAdjacentComponent other) {
+        directions = Lists.newArrayList(other.directions);
+    }
 }
