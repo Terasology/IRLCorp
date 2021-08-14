@@ -6,7 +6,7 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MechanicalPowerWindingComponent implements Component<MechanicalPowerWindingComponent> {
     @Override
-    public void copy(MechanicalPowerWindingComponent other) {
+    public void copyFrom(MechanicalPowerWindingComponent other) {
 
     }
 }

@@ -9,7 +9,7 @@ public class MechanicalPowerWinderComponent implements Component<MechanicalPower
     public int maxTransferAmount;
 
     @Override
-    public void copy(MechanicalPowerWinderComponent other) {
+    public void copyFrom(MechanicalPowerWinderComponent other) {
         this.recoveryTime = other.recoveryTime;
         this.maxTransferAmount = other.maxTransferAmount;
     }

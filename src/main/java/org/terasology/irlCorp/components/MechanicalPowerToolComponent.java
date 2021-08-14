@@ -10,7 +10,7 @@ public class MechanicalPowerToolComponent implements Component<MechanicalPowerTo
     public Boolean active = true;
 
     @Override
-    public void copy(MechanicalPowerToolComponent other) {
+    public void copyFrom(MechanicalPowerToolComponent other) {
         this.active = other.active;
     }
 }

@@ -6,7 +6,7 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class BlockPlacerAmmoChestComponent implements Component<BlockPlacerAmmoChestComponent> {
     @Override
-    public void copy(BlockPlacerAmmoChestComponent other) {
+    public void copyFrom(BlockPlacerAmmoChestComponent other) {
 
     }
 }

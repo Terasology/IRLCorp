@@ -12,7 +12,7 @@ public class ToolBlockPlacementComponent implements Component<ToolBlockPlacement
     public int maximumBlocks = 10;
 
     @Override
-    public void copy(ToolBlockPlacementComponent other) {
+    public void copyFrom(ToolBlockPlacementComponent other) {
         this.maximumBlocks = other.maximumBlocks;
         this.maximumRange = other.maximumRange;
     }

@@ -8,7 +8,7 @@ public class MechanicalPowerToolIncreaseMaxPowerComponent implements Component<M
     public float amount = 0;
 
     @Override
-    public void copy(MechanicalPowerToolIncreaseMaxPowerComponent other) {
+    public void copyFrom(MechanicalPowerToolIncreaseMaxPowerComponent other) {
         this.amount = other.amount;
     }
 }

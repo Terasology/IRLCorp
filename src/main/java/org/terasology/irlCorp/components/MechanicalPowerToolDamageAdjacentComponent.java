@@ -8,7 +8,7 @@ public class MechanicalPowerToolDamageAdjacentComponent implements Component<Mec
     public int amount = 1;
 
     @Override
-    public void copy(MechanicalPowerToolDamageAdjacentComponent other) {
+    public void copyFrom(MechanicalPowerToolDamageAdjacentComponent other) {
         this.amount = other.amount;
     }
 }

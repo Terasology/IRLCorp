@@ -6,7 +6,7 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class CreateMechanicalPowerToolComponent implements Component<CreateMechanicalPowerToolComponent> {
     @Override
-    public void copy(CreateMechanicalPowerToolComponent other) {
+    public void copyFrom(CreateMechanicalPowerToolComponent other) {
 
     }
 }
