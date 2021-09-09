@@ -32,8 +32,6 @@ import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.logic.characters.CharacterComponent;
 import org.terasology.engine.logic.characters.GazeAuthoritySystem;
 import org.terasology.engine.logic.common.ActivateEvent;
-import org.terasology.module.health.events.DoDamageEvent;
-import org.terasology.module.inventory.systems.InventoryManager;
 import org.terasology.engine.logic.inventory.ItemComponent;
 import org.terasology.engine.logic.location.LocationComponent;
 import org.terasology.engine.math.Direction;
@@ -66,6 +64,8 @@ import org.terasology.irlCorp.events.BeforePowerToolUsedEvent;
 import org.terasology.irlCorp.events.MechanicalPowerToolPartAddedEvent;
 import org.terasology.irlCorp.events.PowerToolUsedEvent;
 import org.terasology.machines.ExtendedInventoryManager;
+import org.terasology.module.health.events.DoDamageEvent;
+import org.terasology.module.inventory.systems.InventoryManager;
 import org.terasology.potentialEnergyDevices.components.PotentialEnergyDeviceComponent;
 
 import java.util.List;
