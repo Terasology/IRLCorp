@@ -16,10 +16,10 @@
 package org.terasology.irlCorp.processParts;
 
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.registry.In;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.irlCorp.components.MechanicalPowerWinderComponent;
 import org.terasology.machines.ExtendedInventoryManager;
 import org.terasology.module.inventory.systems.InventoryManager;
