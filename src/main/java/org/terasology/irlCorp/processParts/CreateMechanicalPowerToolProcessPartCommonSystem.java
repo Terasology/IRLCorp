@@ -16,15 +16,15 @@
 package org.terasology.irlCorp.processParts;
 
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
-import org.terasology.module.inventory.systems.InventoryManager;
 import org.terasology.engine.registry.In;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.irlCorp.components.MechanicalPowerToolComponent;
 import org.terasology.irlCorp.components.MechanicalPowerToolPartComponent;
 import org.terasology.irlCorp.events.MechanicalPowerToolPartAddedEvent;
 import org.terasology.machines.ExtendedInventoryManager;
+import org.terasology.module.inventory.systems.InventoryManager;
 import org.terasology.workstation.component.SpecificInputSlotComponent;
 import org.terasology.workstation.process.WorkstationInventoryUtils;
 import org.terasology.workstation.process.inventory.InventoryInputProcessPartCommonSystem;
