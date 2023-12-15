@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.irlCorp.components;
 
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
-public class MultiBlockTankWallComponent implements Component<MultiBlockTankWallComponent> {
-    @Override
-    public void copyFrom(MultiBlockTankWallComponent other) {
-
-    }
+public class MultiBlockTankWallComponent extends EmptyComponent<MultiBlockTankWallComponent> {
 }

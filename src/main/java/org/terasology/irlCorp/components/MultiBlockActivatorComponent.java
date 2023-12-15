@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.irlCorp.components;
 
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
-public class MultiBlockActivatorComponent implements Component<MultiBlockActivatorComponent> {
-    @Override
-    public void copyFrom(MultiBlockActivatorComponent other) {
-
-    }
+public class MultiBlockActivatorComponent extends EmptyComponent<MultiBlockActivatorComponent> {
 }
