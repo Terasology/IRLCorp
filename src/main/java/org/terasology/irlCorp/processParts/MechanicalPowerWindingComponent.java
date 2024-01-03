@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.irlCorp.processParts;
 
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
-public class MechanicalPowerWindingComponent implements Component<MechanicalPowerWindingComponent> {
-    @Override
-    public void copyFrom(MechanicalPowerWindingComponent other) {
-
-    }
+public class MechanicalPowerWindingComponent extends EmptyComponent<MechanicalPowerWindingComponent> {
 }

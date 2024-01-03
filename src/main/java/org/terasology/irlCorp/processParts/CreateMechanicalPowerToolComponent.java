@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.irlCorp.processParts;
 
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
-public class CreateMechanicalPowerToolComponent implements Component<CreateMechanicalPowerToolComponent> {
-    @Override
-    public void copyFrom(CreateMechanicalPowerToolComponent other) {
-
-    }
+public class CreateMechanicalPowerToolComponent extends EmptyComponent<CreateMechanicalPowerToolComponent> {
 }
